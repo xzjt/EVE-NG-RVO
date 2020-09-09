@@ -1,0 +1,34 @@
+git clone -b v4.9.40 git://git.launchpad.net/~ubuntu-kernel-test/ubuntu/+source/linux/+git/mainline-crack v4.9.40
+
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.40/0001-base-packaging.patch
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.40/0002-debian-changelog.patch
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.40/0003-configs-based-on-Ubuntu-4.9.0-11.12.patch
+wget http://kerneldedup.org/download/uksm/0.1.2.6/uksm-0.1.2.6-for-v4.9.patch
+
+cd v4.9.40
+patch -p1 < ../0001-base-packaging.patch
+patch -p1 < ../0002-debian-changelog.patch
+patch -p1 < ../0003-configs-based-on-Ubuntu-4.9.0-11.12.patch
+
+
+#patch brctl
+patch -p1 < /usr/src/eve-ng-public-dev/patch/linux-4.11_bridge.patch
+
+# patch uksm
+patch -p1 < ../0.1.2.6/uksm-0.1.2.6-for-v4.9.patch
+
+apt-get build-dep linux
+apt-get install kernel-package
+
+cp -a /usr/share/kernel-package/examples/etc/kernel/postinst.d/force-build-link /etc/kernel/postinst.d/
+cp -a /usr/share/kernel-package/examples/etc/kernel/postrm.d/force-build-link /etc/kernel/postrm.d/
+
+# EDIT /etc/kernel-pkg.conf
+cp /usr/src/eve-ng-public-dev/debian/kernel-pkg.conf /etc/kernel-pkg.conf
+make-kpkg clean
+TMPVER="config-$(uname -r)"
+mv /boot/${TMPVER} /boot/${TMPVER}.ori
+cat debian.master/config/config.common.ubuntu debian.master/config/amd64/config.common.amd64 debian.master/config/amd64/config.flavour.generic | sed -e 's/.*CONFIG_VERSION_SIGNATURE.*/CONFIG_VERSION_SIGNATURE="Ubuntu 4.4.14-040414.201606241434-generic 4.4.14"/' > /boot/${TMPVER}
+fakeroot make-kpkg -j4 --initrd --append-to-version=-eve-ng-ukms kernel-image kernel-headers
+
+mv /boot/${TMPVER}.ori /boot/${TMPVER}

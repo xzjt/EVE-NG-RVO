@@ -1,0 +1,75 @@
+<form id="edit-network-style-form" class="container col-md-12 col-lg-12 edit-network-style-form" data-path="<%=id%>">
+    <div class="row col-md-9 top-part">
+        <label class="edit-network-style-label">Style: <%=id%></label><br>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Style</label>
+            <select name="network[style]" class="form-control network-style-select" data-path="<%=id%>">
+                </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Link color</label>
+            <input name="network[color]" type="color" class="form-control link_color" data-path="<%=id%>">
+        </div>
+        <div class="form-group network-source-pos ">
+            <label class="control-label form-group-addon">Pos <%=src_label_node%></label>
+            <input type="range" name="network[srcpos]" class="form-control network-source-pos armslider" min="0" max="0.5" step="0.01" type="hidden" data-path="<%=id%>" >
+        </div>
+        <div class="form-group network-destination-pos ">
+            <label class="control-label form-group-addon">Pos <%=dst_label_node%></label>
+            <input type="range" name="network[dstpos]" class="form-control network-destination-pos armslider" min="0.5" max="1" step="0.01" type="hidden" data-path="<%=id%>" >
+        </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Link Style</label>
+            <select name="network[linkstyle]" class="form-control network-linkstyle-select" data-path="<%=id%>">
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Link Label</label>
+            <input name="network[label]" type="text" class="form-control link-label-input" data-path="<%=id%>" >
+        </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Pos  Label</label>
+            <input name="network[labelpos]" type="range" class="form-control link-labelpos-input armslider" min="0" max="1" step="0.01" data-path="<%=id%>" >
+        </div>
+        <div class="form-group network-style-stub ">
+            <label class="control-label form-group-addon">Stub</label>
+            <input name="network[stub]" type="number" class="form-control network-style-stub" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group network-style-curviness ">
+            <label class="control-label form-group-addon">Curviness</label>
+            <input name="network[curviness]" type="number" class="form-control network-style-curviness" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group network-style-bezier-curviness ">
+            <label class="control-label form-group-addon">Curviness</label>
+            <input name="network[beziercurviness]" type="number" class="form-control network-style-bezier-curviness" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group network-style-round ">
+            <label class="control-label form-group-addon">Round</label>
+            <input name="network[round]" type="number" class="form-control network-style-round" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group network-style-midpoint ">
+	    <label class="control-label form-group-addon">Midpoint</label>
+	    <input name="network[midpoint]" type="range" class="form-control network-style-midpoint armslider" min="0" max="1" step="0.01" type="hidden" data-path="<%=id%>" >
+	</div>
+    </div>
+    <div class="row col-md-3 btn-part">
+        <button type="submit" class="btn btn-success edit-network-style-form-save" data-path="<%=id%>"><%=MESSAGES[47]%></button>
+        <button type="button" class="btn cancelForm" data-path="<%=id%>"><%=MESSAGES[18]%></button>
+    </div>
+    <input type="hidden" class="firstLinkValues-style">
+    <input type="hidden" class="firstLinkValues-color">
+    <input type="hidden" class="firstLinkValues-linkstyle">
+    <input type="hidden" class="firstLinkValues-label">
+    <input type="hidden" class="firstLinkValues-labelpos">
+    <input type="hidden" class="firstLinkValues-stub">
+    <input type="hidden" class="firstLinkValues-curviness">
+    <input type="hidden" class="firstLinkValues-bezier-curviness">
+    <input type="hidden" class="firstLinkValues-round">
+    <input type="hidden" class="firstLinkValues-midpoint">
+    <input type="hidden" class="firstLinkValues-pos-src">
+    <input type="hidden" class="firstLinkValues-pos-dst">
+    <input type="hidden" name="network[id]" value="<%=id%>">
+    <input type="hidden" name="network[node]" value="<%=node%>">
+    <input type="hidden" name="network[interface_id]" value="<%=interface_id%>">
+    <input type="hidden" name="network[type]" value="<%=type%>">
+</form>

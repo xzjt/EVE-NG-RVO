@@ -1,0 +1,6 @@
+---
+custom_templates:
+  - name: generic
+    listname: generic template
+...
+

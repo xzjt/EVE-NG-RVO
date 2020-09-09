@@ -1,0 +1,21 @@
+
+*********************************************************************
+Cisco IOU License Generator - Kal 2011, python port of 2006 C version
+hostid=007f0101, hostname=eve-ng, ioukey=7f0343
+
+*********************************************************************
+Create the license file $HOME/.iourc with this command:
+ echo -e '[license]\neve-ng = 972f30267ef51616;' | tee $HOME/.iourc 
+
+The command adds the following text to $HOME/.iourc:
+[license]
+eve-ng = 972f30267ef51616;
+
+*********************************************************************
+Disable the phone home feature with this command:
+ grep -q -F '127.0.0.1 xml.cisco.com' /etc/hosts || echo '127.0.0.1 xml.cisco.com' | sudo tee -a /etc/hosts
+
+The command adds the following text to /etc/hosts:
+127.0.0.1 xml.cisco.com
+
+*********************************************************************

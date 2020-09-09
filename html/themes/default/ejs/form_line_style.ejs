@@ -1,0 +1,73 @@
+<form id="edit-line-style-form" class="container col-md-12 col-lg-12 edit-line-style-form" data-path="<%=id%>">
+    <div class="row col-md-9 top-part">
+        <label class="edit-line-style-label">Style: <%=id%></label><br>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Width</label>
+            <input type="number" name="line[width]" min="1" class="form-control line-width" data-path="<%=id%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Arrow Style</label>
+            <select name="line[arrowstyle]" class="form-control select-block line-arrowstyle-select">
+                </select>
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Paint Style</label>
+            <select name="line[paintstyle]" class="form-control line-paintstyle-select" data-path="<%=id%>">
+                </select>
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Line color</label>
+            <input name="line[color]" type="color" class="form-control line_color" data-path="<%=id%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Line Style</label>
+            <select name="line[linestyle]" class="form-control line-linestyle-select" data-path="<%=id%>">
+                </select>
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Line Label</label>
+            <input name="line[label]" type="text" class="form-control line-label" data-path="<%=id%>" >
+        </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Label Pos</label>
+            <input name="line[labelpos]" type="range" class="form-control line-labelpos armslider" min="0" max="1" step="0.01" data-path="<%=id%>" >
+        </div>
+        <div class="form-group line-style-stub">
+            <label class="control-label form-group-addon">Stub</label>
+            <input name="line[stub]" type="number" class="form-control line-stub" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group line-style-curviness">
+            <label class="control-label form-group-addon">Curviness</label>
+            <input name="line[curviness]" type="number" class="form-control line-curviness" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group line-style-bezier-curviness">
+            <label class="control-label form-group-addon">Curviness</label>
+            <input name="line[beziercurviness]" type="number" class="form-control line-bezier-curviness" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group line-style-round">
+            <label class="control-label form-group-addon">Round</label>
+            <input name="line[round]" type="number" class="form-control line-round" data-path="<%=id%>" step="1">
+        </div>
+        <div class="form-group line-style-midpoint">
+            <label class="control-label form-group-addon">Midpoint</label>
+            <input name="line[midpoint]" type="range" class="form-control line-midpoint armslider" min="0" max="1" step="0.01" type="hidden" data-path="<%=id%>" >
+        </div>
+    </div>
+    <div class="row col-md-3 btn-part">
+        <button type="submit" class="btn btn-success edit-line-style-form-save" data-path="<%=id%>"><%=MESSAGES[47]%></button>
+        <button type="button" class="btn cancelForm" data-path="<%=id%>"><%=MESSAGES[18]%></button>
+    </div>
+    <input type="hidden" class="firstLineValues-width">
+    <input type="hidden" class="firstLineValues-arrowstyle">
+    <input type="hidden" class="firstLineValues-paintstyle">
+    <input type="hidden" class="firstLineValues-color">
+    <input type="hidden" class="firstLineValues-linestyle">
+    <input type="hidden" class="firstLineValues-label">
+    <input type="hidden" class="firstLineValues-labelpos">
+    <input type="hidden" class="firstLineValues-stub">
+    <input type="hidden" class="firstLineValues-curviness">
+    <input type="hidden" class="firstLineValues-bezier-curviness">
+    <input type="hidden" class="firstLineValues-round">
+    <input type="hidden" class="firstLineValues-midpoint">
+    <input type="hidden" name="line[id]" value="<%=id%>">
+</form>

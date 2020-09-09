@@ -1,0 +1,18 @@
+---
+type: qemu
+name: FreeBSD
+eth_format: Gi{1}/{0-8}
+eth_name:
+  3: mgnt0
+cpulimit: 1
+icon: Server.png
+cpu: 1
+ram: 2048
+ethernet: 4
+firstmac: 00:11:22:33:44:55
+console: vnc
+shutdown: 1
+qemu_arch: x86_64
+qemu_nic: virtio-net-pci
+qemu_options: -machine type=pc,accel=kvm -vga std -usbdevice tablet -boot order=dc
+...

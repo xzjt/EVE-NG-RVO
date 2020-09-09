@@ -1,0 +1,65 @@
+<form id="edit-link-quality-form" class="container col-md-12 col-lg-12 edit-link-quality-form" data-path="<%=id%>">
+    <div class="row col-md-9 top-part">
+        <label class="edit-link-quality-label">Link Quality: <%=source_node_name%> - <%=destination_node_name%></label><br>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Interface</label>
+            <input type="text" name="link[source_label]" class="form-control link-source_label" value="<%=source_label%>"disabled data-path="<%=id%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Delay (ms)</label>
+            <input type="number" name="link[source_delay]" min="0" max="10000" class="form-control link-source_delay" data-path="<%=id%>" value="<%=source_delay%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Jitter (ms)</label>
+            <input type="number" name="link[source_jitter]" min="0" max="10000" class="form-control link-source_jitter" data-path="<%=id%>" value="<%=source_jitter%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Loss (%)</label>
+            <input type="number" name="link[source_loss]" min="0" max="100" class="form-control link-source_loss" data-path="<%=id%>" value="<%=source_loss%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Rate(kbps)</label>
+            <input type="number" name="link[source_bandwidth]" min="0" max="10000000" class="form-control link-source_bandwidth" data-path="<%=id%>" value="<%=source_bandwidth%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Interface</label>
+            <input type="text" name="link[destination_label]" class="form-control link-destination_label" value="<%=destination_label%>"disabled data-path="<%=id%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Delay (ms)</label>
+            <input type="number" name="link[destination_delay]" min="0" max="10000" class="form-control link-destination_delay" data-path="<%=id%>" value="<%=destination_delay%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Jitter (ms)</label>
+            <input type="number" name="link[destination_jitter]" min="0" max="10000" class="form-control link-destination_jitter" data-path="<%=id%>" value="<%=destination_jitter%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Loss (%)</label>
+            <input type="number" name="link[destination_loss]" min="0" max="100" class="form-control link-destination_loss" data-path="<%=id%>" value="<%=destination_loss%>">
+            </div>
+        <div class="form-group">
+            <label class="control-label form-group-addon">Rate(kbps)</label>
+            <input type="number" name="link[destination_bandwidth]" min="0" max="10000000" class="form-control link-destination_bandwidth" data-path="<%=id%>" value="<%=destination_bandwidth%>">
+            </div>
+	</div>
+    <div class="row col-md-3 btn-part">
+        <button type="button" class="btn btn-success edit-link-quality-form-apply" data-path="<%=id%>"><%=MESSAGES[228]%></button>
+        <% if ( ROLE != "user" && LOCK != 1) { %>
+        <button type="submit" class="btn btn-success edit-link-quality-form-save" data-path="<%=id%>"><%=MESSAGES[47]%></button>
+	<% } %>
+        <button type="button" class="btn cancelForm" data-path="<%=id%>"><%=MESSAGES[16]%></button>
+    </div>
+    <input type="hidden" class="firstLinkValues-source_delay" value="<%=source_delay%>">
+    <input type="hidden" class="firstLinkValues-source_loss" value="<%=source_loss%>">
+    <input type="hidden" class="firstLinkValues-source_bandwidth" value="<%=source_bandwidth%>">
+    <input type="hidden" class="firstLinkValues-source_jitter" value="<%=source_jitter%>">
+    <input type="hidden" class="firstLinkValues-destination_delay" value="<%=destination_delay%>">
+    <input type="hidden" class="firstLinkValues-destination_loss" value="<%=destination_loss%>">
+    <input type="hidden" class="firstLinkValues-destination_bandwidth" value="<%=destination_bandwidth%>">
+    <input type="hidden" class="firstLinkValues-destination_jitter" value="<%=destination_jitter%>"> 
+    <input type="hidden" name="link[source]" value="<%=SourceId%>">
+    <input type="hidden" name="link[destination]" value="<%=DestId%>">
+    <input type="hidden" name="link[source_interfaceId]" value="<%=SourceIfaceId%>">
+    <input type="hidden" name="link[destination_interfaceId]" value="<%=DestIfaceId%>">
+    <input type="hidden" name="link[save]" value="1">
+</form>
