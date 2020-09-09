@@ -2,10 +2,14 @@ function usermgmtController($scope, $http, $rootScope, $uibModal, $log) {
 	$scope.testAUTH("/usermgmt"); //TEST AUTH
 	$scope.userdata='';
 	////Invisible columns//START
-	$scope.sessionTime=false;
-	$scope.sessionIP=false;
-	$scope.currentFolder=false;
-	$scope.currentLab=false;
+	// $scope.sessionTime=false;
+	// $scope.sessionIP=false;
+	// $scope.currentFolder=false;
+	// $scope.currentLab=false;
+	$scope.sessionTime='';
+	$scope.sessionIP='';
+	$scope.currentFolder='';
+	$scope.currentLab='';
 	$scope.edituser='';
 	////Invisible columns//END
 	$('body').removeClass().addClass('hold-transition skin-blue layout-top-nav');
