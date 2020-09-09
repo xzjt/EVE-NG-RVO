@@ -4,10 +4,10 @@ This is redevelop of EVE-NG Community version 203.110. It supports hot-plugin!
 
 Useage:
 
-    1. Download the community version from EVE-NG offical  
+    1. Download the community version 203.110 from EVE-NG offical  
     
         or download it from the given link above  
-        Link: https://pan.baidu.com/s/11Wa10xZ-2q6yGEvbHhr5FA ode: g6kh
+        Link: https://pan.baidu.com/s/11Wa10xZ-2q6yGEvbHhr5FA Code: g6kh
 
     2. Clone my whole project via    
     
