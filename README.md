@@ -6,11 +6,11 @@ Useage:
         or download it from the given link above
         Link: https://pan.baidu.com/s/11Wa10xZ-2q6yGEvbHhr5FA Code: g6kh
     2. Clone my whole project via
-        '''shell
+        '''
         git clone https://github.com/petetong1989/EVE-NG-COMM-Redevelop.git
         '''
     3. Assign execute for deployEVEnewCode.sh script and execute it.
-        '''shell
+        '''
         sudo chmod +x deployEVEnewCode.sh
         ./deployEVEnewCode.sh
         '''
