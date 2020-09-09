@@ -1,7 +1,7 @@
 function usermgmtController($scope, $http, $rootScope, $uibModal, $log) {
 	$scope.testAUTH("/usermgmt"); //TEST AUTH
 	$scope.userdata='';
-	////Invisible columns//START
+	//Invisible columns//START
 	// $scope.sessionTime=false;
 	// $scope.sessionIP=false;
 	// $scope.currentFolder=false;
@@ -31,7 +31,6 @@ function usermgmtController($scope, $http, $rootScope, $uibModal, $log) {
 	/////////////////
 	//Delete user //START
 	$scope.deleteUser = function(username){
-		console.log('hrer')
 		if (username == 'admin'){
 			toastr["error"]("Admin is not allowed to deleted!", "Error");
 		}else if (confirm('Are you sure you want to delete user '+username+'?')) {

@@ -32,11 +32,11 @@ function ModalCtrl($scope, $uibModal, $log) {
 						return {'name': $scope.newElementName, 'path': $scope.path};
 						break;
 				case 'editfile':
-                                                $scope.labInfo.fullPathToFile = $scope.fullPathToFile;
+						$scope.labInfo.fullPathToFile = $scope.fullPathToFile;
 						return {'info': $scope.labInfo, 'path': $scope.path};
 						break;
 				case 'editLab':
-                                                $scope.labInfo.fullPathToFile = $scope.fullPathToFile;
+						$scope.labInfo.fullPathToFile = $scope.fullPathToFile;
 						return {'info': $scope.labInfo, 'path': $scope.path};
 						break;
 				case 'adduser':
