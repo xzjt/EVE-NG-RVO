@@ -19,12 +19,12 @@ This is redevelop of EVE-NG Community version 203.110. It supports hot-plugin!
 
 3. Assign execute privilege for deployEVEnewCode.sh script and execute it.  
 
-    '''shell
+    ```shell
     
     cd EVE-NG-COMM-Redevelop
     sudo chmod +x deployEVEnewCode.sh
     ./deployEVEnewCode.sh
     
-    '''
+    ```
 
 4. If no failed reported. Congratulations! just enjoy your lab!
