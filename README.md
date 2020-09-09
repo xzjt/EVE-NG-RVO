@@ -12,20 +12,20 @@ Useage:
 
     2. Clone my whole project via  
 
-        '''shell  
+        ```shell  
         
         git clone https://github.com/petetong1989/EVE-NG-COMM-Redevelop.git
         
-        '''
+        ```
 
     3. Assign execute for deployEVEnewCode.sh script and execute it.  
 
-        '''shell  
+        ```shell  
 
         sudo chmod +x deployEVEnewCode.sh  
 
         ./deployEVEnewCode.sh  
 
-        '''
+        ```
 
     4. if no failed reported, congratulations! just enjoy your lab!
