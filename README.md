@@ -8,9 +8,10 @@ It supports hot-plugin, definitely supports hot-plugout as well!
 
 1. Download the community version 203.110 from EVE-NG offical  
 
-    or download it from the given link below  
+    or download it from the given link below:
     
-    Link: [Click Me Asshole](https://pan.baidu.com/s/11Wa10xZ-2q6yGEvbHhr5FA)
+    Link:https://pan.baidu.com/s/11Wa10xZ-2q6yGEvbHhr5FA
+
     PassCode: g6kh
 
 2. Clone my whole project via    
