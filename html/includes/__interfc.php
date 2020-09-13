@@ -193,12 +193,12 @@ class Interfc {
 				if (isset($p['srcpos'])) {
 					$this -> srcpos = (string) $p['srcpos'];
 				} else {
-					$this -> srcpos = "";
+					$this -> srcpos = 0.15;
 				}
 				if (isset($p['dstpos'])) {
 					$this -> dstpos = (string) $p['dstpos'];
 				} else {
-					$this -> dstpos = "";
+					$this -> dstpos = 0.85;
 				}
 				$modified = True;
 			}
