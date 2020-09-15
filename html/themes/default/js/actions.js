@@ -3815,27 +3815,364 @@ function(e) {
     $('.edit-custom-text-form').remove();
 });
 
-// $(document).on('dblclick', '.customText',
-// function(e) {
-//     if (LOCK == 1) {
-//         return 0;
-//     }
-//     logger(1, 'DEBUG: action = action-edit text');
-//     // need to disable select mode
-//     $("#lab-viewport").selectable("disable");
-//     var id = $(this).attr('data-path'),
-//     $selectedCustomText = $("#customText" + id + " p");
+$("body").on("change input", ".edit-network-style-form, .network-style-midpoint, .link-labelpos-input ", function(f) {
+    logger(1, "DEBUG: action = action-change link style");
+    var h = $(this).attr("data-path")
+      , c = ["label"]
+      , a = parseFloat($(".edit-network-style-form .link-labelpos-input").val())
+      , d = lab_topology.getConnections().find(function(e) {
+        return e.id == h
+    })
+      , b = $(".edit-network-style-form .link_color").val()
+      , g = $(".edit-network-style-form .network-linkstyle-select").val();
+    c = Object({
+        label: $(".edit-network-style-form .link-label-input").val(),
+        location: a,
+        cssClass: "link_label " + h
+    });
+    if ($(".edit-network-style-form .network-style-select").val() == "Solid") {
+        dash = '""'
+    } else {
+        dash = "2 4"
+    }
+    switch (g) {
+    case "Straight":
+        $(".form-group.network-style-stub").show();
+        $(".form-group.network-style-curviness").hide();
+        $(".form-group.network-style-bezier-curviness").hide();
+        $(".form-group.network-style-midpoint").hide();
+        $(".form-group.network-style-round").hide();
+        break;
+    case "Bezier":
+        $(".form-group.network-style-stub").hide();
+        $(".form-group.network-style-bezier-curviness").show();
+        $(".form-group.network-style-bezier").hide();
+        $(".form-group.network-style-midpoint").hide();
+        $(".form-group.network-style-round").hide();
+        break;
+    case "Flowchart":
+        $(".form-group.network-style-stub").hide();
+        $(".form-group.network-style-curviness").hide();
+        $(".form-group.network-style-bezier-curviness").hide();
+        $(".form-group.network-style-midpoint").show();
+        $(".form-group.network-style-round").show();
+        break;
+    case "StateMachine":
+        $(".form-group.network-style-stub").hide();
+        $(".form-group.network-style-curviness").show();
+        $(".form-group.network-style-bezier-curviness").hide();
+        $(".form-group.network-style-midpoint").hide();
+        $(".form-group.network-style-round").hide();
+        break
+    }
+    d.setPaintStyle({
+        strokeWidth: 2,
+        stroke: b,
+        dashstyle: dash
+    });
+    lastcurv = (g == "Bezier") ? parseInt($(".form-control.network-style-bezier-curviness").val()) : parseInt($(".form-control.network-style-curviness").val());
+    d.setConnector([g, {
+        stub: parseInt($(".form-control.network-style-stub").val()),
+        curviness: lastcurv,
+        cornerRadius: parseInt($(".form-control.network-style-round").val()),
+        midpoint: parseFloat(1 - $(".form-control.network-style-midpoint").val())
+    }]);
+    src_label = d.getOverlay("src");
+    src_label.loc = parseFloat($(".form-control.network-source-pos").val());
+    dst_label = d.getOverlay("dst");
+    if (dst_label != undefined) {
+        dst_label.loc = parseFloat($(".form-control.network-destination-pos").val())
+    }
+    d.setLabel(c);
+    $(".node_interface." + h.replace(/:/g, "\\:") + ",.link_label." + h.replace(/:/g, "\\:")).css("color", b);
+    if ($(".edit-network-style-form .link-label-input").val() == "") {
+        d.removeOverlay("__label")
+    }
+});
+$("body").on("click", ".edit-network-style-form .cancelForm", function(n) {
+    var c = $(this).attr("data-path")
+      , j = lab_topology.getConnections().find(function(e) {
+        return e.id == c
+    })
+      , b = $(".firstLinkValues-style").val()
+      , k = $(".firstLinkValues-color").val()
+      , p = $(".firstLinkValues-label").val()
+      , f = parseFloat($(".firstLinkValues-labelpos").val())
+      , m = $(".firstLinkValues-linkstyle").val()
+      , i = $(".firstLinkValues-stub").val()
+      , a = $(".firstLinkValues-curviness").val()
+      , o = $(".firstLinkValues-bezier-curviness").val()
+      , q = $(".firstLinkValues-midpoint").val()
+      , h = $(".firstLinkValues-cornerradius").val()
+      , g = $(".firstLinkValues-pos-src").val()
+      , d = $(".firstLinkValues-pos-dst").val();
+    if (p != "") {
+        labelobject = Object({
+            label: p,
+            location: f,
+            cssClass: "link_label " + c
+        })
+    }
+    if (b == "Solid" || b == "") {
+        dash = '""'
+    } else {
+        dash = "2 4"
+    }
+    j.setPaintStyle({
+        strokeWidth: 2,
+        stroke: k,
+        dashstyle: dash
+    });
+    console.log("midpoint =" + q);
+    curve = (m == "Bezier") ? o : a;
+    j.setConnector([(m != "") ? m : "Straight", {
+        stub: parseInt(i),
+        curviness: curve,
+        cornerRadius: parseInt(h),
+        midpoint: parseFloat(1 - q)
+    }]);
+    src_label = j.getOverlay("src");
+    src_label.loc = parseFloat(g);
+    dst_label = j.getOverlay("dst");
+    if (dst_label != undefined) {
+        dst_label.loc = parseFloat(d)
+    }
+    if (p != "") {
+        j.setLabel(labelobject)
+    } else {
+        j.removeOverlay("__label")
+    }
+    $(".node_interface." + c.replace(/:/g, "\\:") + ",.link_label." + c.replace(/:/g, "\\:")).css("color", k);
+    $(".edit-network-style-form").remove()
+});
 
-//     // Disable draggable and resizable before sending request
-//     try {
-//         lab_topology.setDraggable('customText' + id, false);
-//         // $(this).resizable("destroy");
-//     } catch(e) {
-//         console.warn(e);
-//     }
+$("body").on("change input", ".edit-line-style-form, .line-labelpos", function(g) {
+    logger(1, "DEBUG: action = action-change line style");
+    var b = $(this).attr("data-path")
+      , c = lab_topology.getConnections().find(function(e) {
+        return e.id == "Line" + b
+    })
+      , j = ["label"]
+      , d = $(".edit-line-style-form .line_color").val()
+      , i = $(".edit-line-style-form .line-linestyle-select").val()
+      , f = $(".edit-line-style-form .line-paintstyle-select").val()
+      , h = $(".edit-line-style-form .line-arrowstyle-select").val()
+      , a = $(".edit-line-style-form .line-width").val();
+    switch (i) {
+    case "Straight":
+        $(".form-group.line-style-stub").show();
+        $(".form-group.line-style-curviness").hide();
+        $(".form-group.line-style-bezier-curviness").hide();
+        $(".form-group.line-style-midpoint").hide();
+        $(".form-group.line-style-round").hide();
+        break;
+    case "Bezier":
+        $(".form-group.line-style-stub").hide();
+        $(".form-group.line-style-bezier-curviness").show();
+        $(".form-group.line-style-curviness").hide();
+        $(".form-group.line-style-midpoint").hide();
+        $(".form-group.line-style-round").hide();
+        break;
+    case "Flowchart":
+        $(".form-group.line-style-stub").hide();
+        $(".form-group.line-style-curviness").hide();
+        $(".form-group.line-style-bezier-curviness").hide();
+        $(".form-group.line-style-midpoint").show();
+        $(".form-group.line-style-round").show();
+        break;
+    case "StateMachine":
+        $(".form-group.line-style-stub").hide();
+        $(".form-group.line-style-curviness").show();
+        $(".form-group.line-style-bezier-curviness").hide();
+        $(".form-group.line-style-midpoint").hide();
+        $(".form-group.line-style-round").hide();
+        break
+    }
+    j = Object({
+        label: $(".edit-line-style-form .line-label").val(),
+        location: parseFloat($(".edit-line-style-form .line-labelpos").val()),
+        cssClass: "line_label line_label" + b
+    });
+    if (f == "Solid") {
+        dash = '""'
+    } else {
+        dash = "2 4"
+    }
+    c.setPaintStyle({
+        strokeWidth: a,
+        stroke: d,
+        dashstyle: dash
+    });
+    lastcurv = (i == "Bezier") ? parseInt($(".form-control.line-bezier-curviness").val()) : parseInt($(".form-control.line-curviness").val());
+    c.setConnector([i, {
+        stub: parseInt($(".form-control.line-stub").val()),
+        curviness: lastcurv,
+        cornerRadius: parseInt($(".form-control.line-round").val()),
+        midpoint: parseFloat(1 - $(".form-control.line-midpoint").val())
+    }]);
+    c.setLabel(j);
+    if (h == "arrow" || h == "dblarrow") {
+        c.addOverlay(["Arrow", {
+            width: a * 3,
+            length: a * 3,
+            location: 1,
+            direction: 1
+        }])
+    }
+    if (h == "dblarrow") {
+        c.addOverlay(["Arrow", {
+            width: a * 3,
+            length: a * 3,
+            location: 0,
+            direction: -1
+        }])
+    }
+    $(".line_label" + b).css("color", d);
+    if ($(".edit-line-style-form .line-label").val() == "") {
+        c.removeOverlay("__label")
+    }
+});
+$("body").on("click", ".edit-line-style-form .cancelForm", function(m) {
+    var c = $(this).attr("data-path")
+      , g = lab_topology.getConnections().find(function(e) {
+        return e.id == "Line" + c
+    })
+      , o = $(".firstLineValues-label").val()
+      , d = parseFloat($(".firstLineValues-labelpos").val())
+      , j = $(".firstLineValues-paintstyle").val()
+      , i = $(".firstLineValues-color").val()
+      , n = $(".firstLineValues-linestyle").val()
+      , k = $(".firstLineValues-arrowstyle").val()
+      , b = $(".firstLineValues-width").val()
+      , f = $(".firstLineValues-stub").val()
+      , a = $(".firstLineValues-curviness").val()
+      , h = $(".firstLineValues-bezier-curviness").val()
+      , q = $(".firstLineValues-round").val()
+      , p = $(".firstLineValues-midpoint").val();
+    if (o != "") {
+        labelobject = Object({
+            label: o,
+            location: d,
+            cssClass: "line_label line_label" + c
+        })
+    }
+    if (j == "Solid" || style == "") {
+        dash = '""'
+    } else {
+        dash = "2 4"
+    }
+    g.setPaintStyle({
+        strokeWidth: b,
+        stroke: i,
+        dashstyle: dash
+    });
+    g.setConnector([((n != "") ? n : "Straight")]);
+    lastcurv = (n == "Bezier") ? parseInt(h) : parseInt(a);
+    g.setConnector([n, {
+        stub: parseInt(f),
+        curviness: lastcurv,
+        cornerRadius: parseInt(q),
+        midpoint: parseFloat(1 - p)
+    }]);
+    if (o != "") {
+        g.setLabel(labelobject)
+    } else {
+        g.removeOverlay("__label")
+    }
+    if (k == "arrow" || k == "dblarrow") {
+        g.addOverlay(["Arrow", {
+            width: b * 3,
+            length: b * 3,
+            location: 1,
+            direction: 1
+        }])
+    }
+    if (k == "dblarrow") {
+        g.addOverlay(["Arrow", {
+            width: b * 3,
+            length: b * 3,
+            location: 0,
+            direction: -1
+        }])
+    }
+    $(".line_label." + c.replace(/:/g, "\\:")).css("color", i);
+    $(".edit-line-style-form").remove()
+});
 
-//     $selectedCustomText.attr('contenteditable', 'true').focus().addClass('editable');
-// });
+$(document).on("submit", ".edit-network-style-form", function(g) {
+    g.preventDefault();
+    var i = form2Array("network");
+    var h = i.node;
+    var d = $("#lab-viewport").attr("data-path");
+    var b = [];
+    var a = "/api/labs" + d + "/nodes/" + h + "/linkstyle";
+    var c = "PUT";
+    var f = $.ajax({
+        cache: false,
+        timeout: TIMEOUT,
+        type: c,
+        url: encodeURI(a),
+        dataType: "json",
+        data: JSON.stringify(i),
+        success: function(e) {
+            if (e.status == "success") {
+                logger(1, 'DEBUG: network "' + i.name + '" saved.');
+                addMessage(e.status, e.message)
+            } else {
+                logger(1, "DEBUG: application error (" + e.status + ") on " + c + " " + a + " (" + e.message + ").");
+                addModal("ERROR", "<p>" + e.message + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+            }
+        },
+        error: function(j) {
+            var e = getJsonMessage(j.responseText);
+            logger(1, "DEBUG: server error (" + j.status + ") on " + c + " " + a + ".");
+            logger(1, "DEBUG: " + e);
+            addModal("ERROR", "<p>" + e + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+        }
+    });
+    b.push(f);
+    $.when.apply(null, b).done(function() {
+        $("#edit-network-style-form").remove()
+    });
+    return false
+});
+$(document).on("submit", ".edit-line-style-form", function(g) {
+    g.preventDefault();
+    var h = form2Array("line");
+    var i = h.id;
+    var d = $("#lab-viewport").attr("data-path");
+    var b = [];
+    var a = "/api/labs" + d + "/lineobjects/" + i;
+    var c = "PUT";
+    var f = $.ajax({
+        cache: false,
+        timeout: TIMEOUT,
+        type: c,
+        url: encodeURI(a),
+        dataType: "json",
+        data: JSON.stringify(h),
+        success: function(e) {
+            if (e.status == "success") {
+                logger(1, 'DEBUG: network "' + h.name + '" saved.');
+                addMessage(e.status, e.message)
+            } else {
+                logger(1, "DEBUG: application error (" + e.status + ") on " + c + " " + a + " (" + e.message + ").");
+                addModal("ERROR", "<p>" + e.message + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+            }
+        },
+        error: function(j) {
+            var e = getJsonMessage(j.responseText);
+            logger(1, "DEBUG: server error (" + j.status + ") on " + c + " " + a + ".");
+            logger(1, "DEBUG: " + e);
+            addModal("ERROR", "<p>" + e + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+        }
+    });
+    b.push(f);
+    $.when.apply(null, b).done(function() {
+        $("#edit-line-style-form").remove()
+    });
+    return false
+});
 
 $(document).on("dblclick", ".customText",
 function(a) {

@@ -57,7 +57,7 @@ function apiAddLabNetwork($lab, $p, $o) {
 function apiDeleteLabNetwork($lab, $id) {
 
 	// Deleting the network
-	$network = $lab->getNetworks()[$id];
+	$network = $lab -> getNetworks()[$id];
 	$rc = $lab -> deleteNetwork($id);
 
 	if ($rc === 0) {
@@ -112,23 +112,61 @@ function apiEditLabNetwork($lab, $p) {
  * @return  Array                       Return code (JSend data)
  */
 function apiEditLabNetworks($lab, $p) {
-        // Edit network
-        foreach ( $p as $network ) {
-          $network['save'] = 0 ;
-          $rc = $lab -> editNetwork($network);
-        }
-        $rc = $lab -> save() ;
+	// Edit network
+	foreach ( $p as $network ) {
+		$network['save'] = 0 ;
+		$rc = $lab -> editNetwork($network);
+	}
+	$rc = $lab -> save();
 
-        if ($rc === 0) {
-                $output['code'] = 201;
-                $output['status'] = 'success';
-                $output['message'] = $GLOBALS['messages'][60023];
-        } else {
-                $output['code'] = 400;
-                $output['status'] = 'fail';
-                $output['message'] = $GLOBALS['messages'][$rc];
-        }
-        return $output;
+	if ($rc === 0) {
+			$output['code'] = 201;
+			$output['status'] = 'success';
+			$output['message'] = $GLOBALS['messages'][60023];
+	} else {
+			$output['code'] = 400;
+			$output['status'] = 'fail';
+			$output['message'] = $GLOBALS['messages'][$rc];
+	}
+	return $output;
+}
+
+
+function apiEditlinkstyle($lab, $p) {
+	// Save linksytle
+	$f = fopen('/tmp/zb.log','a+');
+	fwrite($f, PHP_EOL.date('Y-m-d H:i:s').json_encode('This is break point2').PHP_EOL);
+	fclose($f);
+	foreach ($lab -> getNodes() as $node_id => $node) {
+		if ((int) $p['node'] == $node_id) {
+			$f = fopen('/tmp/zb.log','a+');
+			fwrite($f, PHP_EOL.date('Y-m-d H:i:s').json_encode('This is break point3').PHP_EOL);
+			fclose($f);
+			foreach ($node -> getInterfaces() as  $interface_id => $interface) {
+				if ($interface_id == (int) $p['interface_id']) {
+					$f = fopen('/tmp/zb.log','a+');
+					fwrite($f, PHP_EOL.date('Y-m-d H:i:s').json_encode('This is break point4').PHP_EOL);
+					fclose($f);
+					$rc = $interface -> edit($p);
+				}
+			}
+		}
+	}
+
+	if ($rc == 0) {
+		$rc = $lab -> save();
+	}
+
+	if ($rc == 0) {
+		$output['code'] = 201;
+		$output['status'] = 'success';
+		$output['message'] = $GLOBALS['messages'][60023];
+	} else {
+		$output['code'] = 400;
+		$output['status'] = 'fail';
+		$output['message'] = $GLOBALS['messages'][$rc];
+	}
+	return $output;
 }
 
 /**

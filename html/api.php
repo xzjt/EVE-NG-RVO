@@ -751,8 +751,8 @@ $app -> put('/api/labs/(:path+)', function($path = array()) use ($app, $db) {
 	} else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl\/nodes\/[0-9]+$/', $s)) {
 		$p['id'] = $id;
 		$output = apiEditLabNode($lab, $p);
-        } else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl\/nodes$/', $s)) {
-                $output = apiEditLabNodes($lab, $p);
+    } else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl\/nodes$/', $s)) {
+        $output = apiEditLabNodes($lab, $p);
 	} else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl\/nodes\/[0-9]+\/export$/', $s)) {
 		if ($tenant < 0) {
 			// User does not have an assigned tenant
@@ -782,6 +782,12 @@ $app -> put('/api/labs/(:path+)', function($path = array()) use ($app, $db) {
 		$output = apiUnlockLab($lab);	
 	} else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl\/move$/', $s)) {
 		$output = apiMoveLab($lab, $p['path']);
+	} else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl\/nodes\/[0-9]+\/linkstyle$/', $s)){
+		$f = fopen('/tmp/zb.log','a+');
+		fwrite($f, PHP_EOL.date('Y-m-d H:i:s').json_encode('This is break point1').PHP_EOL);
+		fclose($f);
+
+		$output = apiEditlinkstyle($lab, $p);
 	} else {
 		$output['code'] = 400;
 		$output['status'] = 'fail';

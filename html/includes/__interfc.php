@@ -145,61 +145,6 @@ class Interfc {
 				error_log(date('M d H:i:s ').'WARNING: '.$GLOBALS['messages'][10003]);
 			} else if (isset($p['network_id'])) {
 				$this -> network_id = (int) $p['network_id'];
-				if (isset($p['color'])) {
-					$this -> color = (string) $p['color'];
-				} else {
-					$this -> color = "";
-				}
-				if (isset($p['style'])) {
-					$this -> style = (string) $p['style'];
-				} else {
-					$this -> style = "";
-				}
-				if (isset($p['linkstyle'])) {
-					$this -> linkstyle = (string) $p['linkstyle'];
-				} else {
-					$this -> linkstyle = "";
-				}
-				if (isset($p['labelpos'])) {
-					$this -> labelpos = (string) $p['labelpos'];
-				} else {
-					$this -> labelpos = "";
-				}
-				if (isset($p['stub'])) {
-					$this -> stub = (string) $p['stub'];
-				} else {
-					$this -> stub = "";
-				}
-				if (isset($p['curviness'])) {
-					$this -> curviness = (string) $p['curviness'];
-				} else {
-					$this -> curviness = "";
-				}
-				if (isset($p['beziercurviness'])) {
-					$this -> beziercurviness = (string) $p['beziercurviness'];
-				} else {
-					$this -> beziercurviness = "";
-				}
-				if (isset($p['round'])) {
-					$this -> round = (string) $p['round'];
-				} else {
-					$this -> round = "";
-				}
-				if (isset($p['midpoint'])) {
-					$this -> midpoint = (string) $p['midpoint'];
-				} else {
-					$this -> midpoint = "";
-				}
-				if (isset($p['srcpos'])) {
-					$this -> srcpos = (string) $p['srcpos'];
-				} else {
-					$this -> srcpos = 0.15;
-				}
-				if (isset($p['dstpos'])) {
-					$this -> dstpos = (string) $p['dstpos'];
-				} else {
-					$this -> dstpos = 0.85;
-				}
 				$modified = True;
 			}
 		}
@@ -235,6 +180,91 @@ class Interfc {
 			}
 		}
 
+		if (isset($p['color'])) {
+			$this -> color = (string) $p['color'];
+			$modified = True;
+		} else {
+			$this -> color = "";
+			$modified = True;
+		}
+		if (isset($p['style'])) {
+			$this -> style = (string) $p['style'];
+			$modified = True;
+		} else {
+			$this -> style = "";
+			$modified = True;
+		}
+		if (isset($p['linkstyle'])) {
+			$this -> linkstyle = (string) $p['linkstyle'];
+			$modified = True;
+		} else {
+			$this -> linkstyle = "";
+			$modified = True;
+		}
+		if (isset($p['label'])) {
+			$this -> label = (string) $p['label'];
+			$modified = True;
+		} else {
+			$this -> label = "";
+			$modified = True;
+		}
+		if (isset($p['labelpos'])) {
+			$this -> labelpos = (string) $p['labelpos'];
+			$modified = True;
+		} else {
+			$this -> labelpos = "";
+			$modified = True;
+		}
+		if (isset($p['stub'])) {
+			$this -> stub = (string) $p['stub'];
+			$modified = True;
+		} else {
+			$this -> stub = "";
+			$modified = True;
+		}
+		if (isset($p['curviness'])) {
+			$this -> curviness = (string) $p['curviness'];
+			$modified = True;
+		} else {
+			$this -> curviness = "";
+			$modified = True;
+		}
+		if (isset($p['beziercurviness'])) {
+			$this -> beziercurviness = (string) $p['beziercurviness'];
+			$modified = True;
+		} else {
+			$this -> beziercurviness = "";
+			$modified = True;
+		}
+		if (isset($p['round'])) {
+			$this -> round = (string) $p['round'];
+			$modified = True;
+		} else {
+			$this -> round = "";
+			$modified = True;
+		}
+		if (isset($p['midpoint'])) {
+			$this -> midpoint = (string) $p['midpoint'];
+			$modified = True;
+		} else {
+			$this -> midpoint = "";
+			$modified = True;
+		}
+		if (isset($p['srcpos'])) {
+			$this -> srcpos = (string) $p['srcpos'];
+			$modified = True;
+		} else {
+			$this -> srcpos = 0.15;
+			$modified = True;
+		}
+		if (isset($p['dstpos'])) {
+			$this -> dstpos = (string) $p['dstpos'];
+			$modified = True;
+		} else {
+			$this -> dstpos = 0.85;
+			$modified = True;
+		}
+
 		if ($modified) {
 			// At least an attribute is changed
 			return 0;
@@ -267,6 +297,19 @@ class Interfc {
 	public function getNetworkId() {
 		if ($this -> type == 'ethernet' && isset($this -> network_id)) {
 			return $this -> network_id;
+		} else {
+			return 0;
+		}
+	}
+
+	/**
+	 * Method to get interface ID.
+	 * 
+	 * @return	string                      interface ID or 0 if not set or not "ethernet" type
+	 */
+	public function getId() {
+		if ($this -> type == 'ethernet' && isset($this -> id)) {
+			return $this -> id;
 		} else {
 			return 0;
 		}

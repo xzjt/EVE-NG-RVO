@@ -308,6 +308,7 @@ class Lab {
 					if (isset($interface -> attributes() -> color)) $i['color'] = (string) $interface -> attributes() -> color;
 					if (isset($interface -> attributes() -> style)) $i['style'] = (string) $interface -> attributes() -> style;
 					if (isset($interface -> attributes() -> linkstyle)) $i['linkstyle'] = (string) $interface -> attributes() -> linkstyle;
+					if (isset($interface -> attributes() -> label)) $i['label'] = (string) $interface -> attributes() -> label;
 					if (isset($interface -> attributes() -> labelpos)) $i['labelpos'] = (string) $interface -> attributes() -> labelpos;
 					if (isset($interface -> attributes() -> stub)) $i['stub'] = (string) $interface -> attributes() -> stub;
 					if (isset($interface -> attributes() -> curviness)) $i['curviness'] = (string) $interface -> attributes() -> curviness;
@@ -1370,6 +1371,18 @@ class Lab {
 							$e -> addAttribute('name', $interface -> getName());
 							$e -> addAttribute('type', $interface -> getNType());
 							$e -> addAttribute('network_id', $interface -> getNetworkId());
+							$e -> addAttribute('color', $interface -> color);
+							$e -> addAttribute('style', $interface -> style);
+							$e -> addAttribute('linkstyle', $interface -> linkstyle);
+							$e -> addAttribute('label', $interface -> label);
+							$e -> addAttribute('labelpos', $interface -> labelpos);
+							$e -> addAttribute('stub', $interface -> stub);
+							$e -> addAttribute('curviness', $interface -> curviness);
+							$e -> addAttribute('beziercurviness', $interface -> beziercurviness);
+							$e -> addAttribute('round', $interface -> round);
+							$e -> addAttribute('midpoint', $interface -> midpoint);
+							$e -> addAttribute('srcpos', $interface -> srcpos);
+							$e -> addAttribute('dstpos', $interface -> dstpos);
 						}
 					}
 

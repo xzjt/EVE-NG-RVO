@@ -1293,6 +1293,79 @@ a:focus{
 	padding: 3px 20px;
 
 }
+
+#lab-viewport .link_label , #lab-viewport .line_label {
+	background-color: #e6f5ff;
+	border: 2px solid;
+	/*border-radius: 8px;*/
+	font-family: helvetica;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding: 0px 2px 0px 2px;
+}
+
+.edit-custom-shape-form, .edit-custom-text-form, .edit-network-style-form, .edit-line-style-form , .edit-link-quality-form {
+    position: fixed;
+    left: 40px;
+    bottom: 0px;
+    /*bottom: 0;  - but  */
+    right: 0;
+    z-index: 4000;
+    border-top: 1px solid #222d32;
+    border-bottom: 3px solid #222d32;
+	padding-top: 5px !important;
+	padding-bottom: 10px !important;
+    background-color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-width: 15px;
+    border-color: #334047;
+}
+
+.link-label-input {
+	width: 100% !important;
+}
+
+.edit-custom-shape-form .top-part, .edit-custom-text-form .top-part, .edit-network-style-form .top-part, .edit-line-style-form .btn .top-part, .edit-link-quality-form .btn .top-part{
+    padding-left: 16px !important;
+}
+
+.edit-custom-shape-form .form-group, .edit-custom-text-form .form-group, .edit-network-style-form .form-group, .edit-line-style-form .form-group, .edit-link-quality-form .form-group {
+    padding-right: 5px;
+}
+
+.edit-custom-shape-form .form-group input, .edit-custom-text-form .form-group input, .edit-network-style-form .form-group input, .edit-line-style-form .form-group input, .edit-link-quality-form .form-group input{
+    width: 90px;
+}
+.edit-custom-shape-form .form-group .checkbox, .edit-custom-text-form .form-group .checkbox, .edit-network-style-form .form-group .checkbox, .edit-line-style-form .form-group .checkbox{
+    width: 20px;
+    display: inline-block;
+    margin: 0;
+}
+
+.edit-custom-shape-form .form-group label, .edit-custom-text-form .form-group label, .edit-network-style-form .form-group label, .edit-link-quality-form .form-group label , .edit-line-style-form .form-group label{
+    display: block;
+}
+
+.edit-custom-shape-form .form-group i, .edit-custom-text-form .form-group i, .edit-network-style-form .form-group i, .edit-line-style-form .form-group i, .edit-link-quality-form .form-group i{
+    padding: 0;
+    margin: 0;
+}
+
+.edit-custom-shape-form .form-group .btn-part, .edit-custom-text-form .form-group .btn-part, .edit-network-style-form .form-group .btn-part, .edit-line-style-form .form-group .btn-part, .edit-link-quality-form .form-group .btn-part{
+    float: right;
+}
+
+.edit-custom-shape-form .form-group, .edit-custom-text-form .form-group, .edit-network-style-form .form-group, .edit-line-style-form .form-group,  .edit-link-quality-form .form-group{
+    display: block;
+    float: left;
+    height: 60px;
+}
+
 .dropdown-menu > li.action-nodelink-li > a {
 	padding: 0;
 	padding-right: 10px;
