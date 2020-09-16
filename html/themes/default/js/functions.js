@@ -3652,16 +3652,9 @@ function printLabTopology() {
                 // Remove unused elements
                 $('.unused').remove();
 
-                // Move elements under the topology node
-                //$('._jsPlumb_connector, ._jsPlumb_overlay, ._jsPlumb_endpoint_anchor_').detach().appendTo('#lab-viewport');
-                // if lock then freeze node network
                 if (labinfo['lock'] == 1) {
                     window.LOCK = 1;
-                    //alert("lock it ")
                     defer.resolve();
-                    // if (ROLE == 'admin' || ROLE == 'editor' ) {
-                    //      lab_topology.setDraggable($('customShape, .node_frame, .network_frame'), false );
-                    //}
                     $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-remove-circle"></i>' + MESSAGES[167])
                     $('.action-lock-lab').removeClass('action-lock-lab').addClass('action-unlock-lab')
 
@@ -3711,7 +3704,6 @@ function printLabTopology() {
                 $('.node_name').css('color', '#b8c7ce')
                 $('.network_name').css('color', '#b8c7ce')
             }
-            //lab_topology.repaintEverything()
             $("#loading-lab").remove();
             $("#lab-sidebar *").show();
         })
@@ -3728,451 +3720,6 @@ function printLabTopology() {
     });
     return defer.promise();
 }
-
-// function printLabTopology() {
-//     var defer = $.Deferred();
-//     $('#lab-viewport').empty();
-//     $('#lab-viewport').selectable();
-//     $('#lab-viewport').selectable("destroy");
-//     $('#lab-viewport').selectable({
-//         filter: ".customShape, .network, .node",
-//         start: function() {
-//             window.newshape = [];
-//             //var zoom = 100 / $('#zoomslide').slider("value")
-//             $('.customShape').each(function() {
-//                 var $this = $(this);
-//                 var width;
-//                 var height;
-//                 window.newshape[$this.attr('id')] = ({
-//                     width: Math.trunc($this.innerWidth()),
-//                     height: Math.trunc($this.innerHeight())
-//                 })
-//             })
-//         },
-//         stop: function(event, ui) {
-//             $('.customShape').each(function(index) {
-//                 $this = $(this);
-//                 $this.height(window.newshape[$this.attr('id')]['height'])
-//                 $this.width(window.newshape[$this.attr('id')]['width'])
-//             });
-//             delete window.newshape;
-//             updateFreeSelect(event, ui)
-//         },
-//         distance: 1
-//     });
-
-//     var lab_filename = $('#lab-viewport').attr('data-path'),
-//     $labViewport = $('#lab-viewport'),
-//     loadingLabHtml = '' + '<div id="loading-lab" class="loading-lab">' + '<div class="container">' + '<img src="/themes/default/images/wait.gif"/><br />' + '<h3>Loading Lab</h3>' + '<div class="progress">' + '<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>' + '</div>' + '</div>' + '</div>',
-//     labNodesResolver = $.Deferred(),
-//     labTextObjectsResolver = $.Deferred(),
-//     progressbarValue = 0,
-//     progressbarMax = 100;
-
-//     if ($labViewport.data("refreshing")) {
-//         return;
-//     }
-//     window.lab_topology = undefined;
-//     $labViewport.empty();
-//     $labViewport.data('refreshing', true);
-//     $labViewport.after(loadingLabHtml);
-//     $("#lab-sidebar *").hide();
-
-//     $.when(getNetworks(null), getNodes(null), getTopology(), getTextObjects(), getLabInfo(lab_filename)).done(function(networks, nodes, topology, textObjects, labinfo) {
-
-//         var networkImgs = [],
-//         nodesImgs = [],
-//         textObjectsCount = Object.keys(textObjects).length;
-
-//         progressbarMax = Object.keys(networks).length + Object.keys(nodes).length + Object.keys(textObjects).length;
-//         $(".progress-bar").attr("aria-valuemax", progressbarMax);
-
-//         $.each(networks,
-//         function(key, value) {
-//             var icon;
-//             var unusedClass = '';
-
-//             if (value['type'] == 'bridge' || value['type'] == 'ovs') {
-//                 icon = 'lan.png';
-//             } else {
-//                 icon = 'cloud.png';
-//             }
-//             if (value['visibility'] == 0) unusedClass = ' unused '
-
-//             $labViewport.append('<div id="network' + value['id'] + '" ' + 'class="context-menu  network network' + value['id'] + ' network_frame ' + unusedClass + ' " ' + 'style="top: ' + value['top'] + 'px; left: ' + value['left'] + 'px" ' + 'data-path="' + value['id'] + '" ' + 'data-name="' + value['name'] + '">' + '<div class="network_name">' + value['name'] + '</div>' + '<div class="tag  hidden" title="Connect to another node">' + '<i class="fas fa-ethernet plug-icon dropdown-toggle ep"></i>' + '</div>' + '</div>');
-
-//             networkImgs.push($.Deferred(function(defer) {
-//                 var img = new Image();
-
-//                 img.onload = resolve;
-//                 img.onerror = resolve;
-//                 img.onabort = resolve;
-
-//                 img.src = "/images/" + icon;
-
-//                 $(img).prependTo("#network" + value['id']);
-
-//                 function resolve(image) {
-//                     img.onload = null;
-//                     img.onerror = null;
-//                     img.onabort = null;
-//                     defer.resolve(image);
-//                 }
-//             }));
-
-//             $(".progress-bar").css("width", ++progressbarValue / progressbarMax * 100 + "%");
-
-//         });
-//         $.each(nodes,
-//         function(key, value) {
-//             if (value['url'].indexOf('token') != -1) {
-//                 hrefbuf = '<a href="' + value['url'] + '" target="' + value['name'] + '" >';
-//             } else {
-//                 hrefbuf = '<a href="' + value['url'] + '" >';
-//             }
-//             $labViewport.append('<div id="node' + value['id'] + '" ' + 'class="context-menu node node' + value['id'] + ' node_frame "' + 'style="top: ' + value['top'] + 'px; left: ' + value['left'] + 'px;" ' + 'data-path="' + value['id'] + '" ' + 'data-status="' + value['status'] + '" ' + 'data-name="' + value['name'] + '">' + '<div class="tag  hidden" title="Connect to another node">' + '<i class="fas fa-ethernet plug-icon dropdown-toggle ep"></i>' + '</div>' + hrefbuf + '</a>' + '<div class="node_name"><i class="node' + value['id'] + '_status"></i> ' + value['name'] + '</div>' + '</div>');
-//             nodesImgs.push($.Deferred(function(defer) {
-//                 var img = new Image();
-
-//                 img.onload = resolve;
-//                 img.onerror = resolve;
-//                 img.onabort = resolve;
-
-//                 img.src = "/images/icons/" + value['icon'];
-
-//                 if (value['status'] == 0) img.className = 'grayscale';
-
-//                 $(img).appendTo("#node" + value['id'] + " a");
-
-//                 // need the presence of images in the DOM
-//                 if (isIE && value['status'] == 0) {
-//                     addIEGrayscaleWrapper($(img))
-//                 }
-
-//                 function resolve(image) {
-//                     img.onload = null;
-//                     img.onerror = null;
-//                     img.onabort = null;
-//                     defer.resolve(image);
-//                 }
-//             }));
-
-//             $(".progress-bar").css("width", ++progressbarValue / progressbarMax * 100 + "%");
-//         });
-//         // In bad situation resolving textobject will save our soul ;-)
-//         setTimeout(checkDeferred = (labTextObjectsResolver.state() == 'pending' ? true: labTextObjectsResolver.resolve()), 10000)
-//         //add shapes from server to viewport
-//         $.each(textObjects,
-//         function(key, value) {
-//             getTextObject(value['id']).done(function(textObject) {
-//                 $(".progress-bar").css("width", ++progressbarValue / progressbarMax * 100 + "%");
-
-//                 var $newTextObject = $(textObject['data']);
-
-//                 if ($newTextObject.attr("id").indexOf("customShape") !== -1) {
-//                     $newTextObject.attr("id", "customShape" + textObject.id);
-//                     $newTextObject.attr("data-path", textObject.id);
-//                     $labViewport.prepend($newTextObject);
-                    
-//                     $newTextObject.resizable().resizable("destroy").resizable({
-//                         grid: [3, 3],
-//                         autoHide: true,
-//                         resize: function(event, ui) {
-//                             textObjectResize(event, ui, {
-//                                 "shape_border_width": 5
-//                             });
-//                         },
-//                         stop: textObjectDragStop
-//                     });
-//                 } else if ($newTextObject.attr("id").indexOf("customText") !== -1) {
-//                     $newTextObject.attr("id", "customText" + textObject.id);
-//                     $newTextObject.attr("data-path", textObject.id);
-//                     $labViewport.prepend($newTextObject);
-
-//                     $newTextObject.resizable().resizable('destroy');
-//                 } else {
-//                     return void 0;
-//                 }
-//                 // Finally clean old class saved by error or bug
-//                 $newTextObject.removeClass('ui-selected');
-//                 $newTextObject.removeClass('move-selected');
-//                 $newTextObject.removeClass('dragstopped');
-//                 // if (labinfo['lock'] == 1) $newTextObject.resizable("disable");
-//                 if (--textObjectsCount === 0) {
-//                     labTextObjectsResolver.resolve();
-//                 }
-
-//                 //@123
-//             }).fail(function() {
-//                 logger(1, 'DEBUG: Failed to load Text Object' + value['name'] + '!');
-//             });
-//         });
-//         if (Object.keys(textObjects).length === 0) {
-//             labTextObjectsResolver.resolve();
-//         }
-//         $.when.apply($, networkImgs.concat(nodesImgs)).done(function() {
-//             // Drawing topology
-//             jsPlumb.ready(function() {
-
-//                 // Create jsPlumb topology
-//                 try {
-//                     window.lab_topology.reset()
-//                 } catch(ex) {
-//                     window.lab_topology = jsPlumb.getInstance()
-//                 };
-//                 window.moveCount = 0
-//                 lab_topology.setContainer($("#lab-viewport"));
-//                 lab_topology.importDefaults({
-//                     Anchor: 'Continuous',
-//                     Connector: ['Straight'],
-//                     Endpoint: 'Blank',
-//                     PaintStyle: {
-//                         strokeWidth: 2,
-//                         stroke: '#c00001'
-//                     },
-//                     cssClass: 'link'
-//                 });
-//                 // Read privileges and set specific actions/elements
-//                 if ((ROLE == 'admin' || ROLE == 'editor') && labinfo['lock'] == 0) {
-//                     dragDeferred = $.Deferred()
-//                     $.when(labTextObjectsResolver).done(function() {
-//                         logger(1, 'DEBUG: ' + textObjectsCount + ' Shape(s) left');
-//                         lab_topology.draggable($('.node_frame, .network_frame, .customShape'), {
-//                             containment: false,
-//                             grid: [3, 3],
-//                             stop: function(e, ui) {
-//                                 ObjectPosUpdate(e, ui)
-//                             }
-//                         });
-
-//                         adjustZoom(lab_topology, window.scroll_top || 0, window.scroll_left || 0)
-//                         dragDeferred.resolve();
-//                     });
-
-//                     // Node as source or dest link
-//                     $.when(dragDeferred).done(function() {
-//                         $.each(nodes,
-//                         function(key, value) {
-//                             lab_topology.makeSource('node' + value['id'], {
-//                                 filter: ".ep",
-//                                 Anchor: "Continuous",
-//                                 extract: {
-//                                     "action": "the-action"
-//                                 },
-//                                 maxConnections: 30,
-//                                 onMaxConnections: function(info, e) {
-//                                     alert("Maximum connections (" + info.maxConnections + ") reached");
-//                                 }
-//                             });
-
-//                             lab_topology.makeTarget($('#node' + value['id']), {
-//                                 dropOptions: {
-//                                     hoverClass: "dragHover"
-//                                 },
-//                                 anchor: "Continuous",
-//                                 allowLoopback: false
-//                             });
-//                             adjustZoom(lab_topology, window.scroll_top || 0, window.scroll_left || 0)
-//                         });
-//                         $.each(networks,
-//                         function(key, value) {
-//                             if (value['visibility'] == 1) {
-//                                 lab_topology.makeSource('network' + value['id'], {
-//                                     filter: ".ep",
-//                                     Anchor: "Continuous",
-//                                     connectionType: "basic",
-//                                     extract: {
-//                                         "action": "the-action"
-//                                     },
-//                                     maxConnections: 30,
-//                                     onMaxConnections: function(info, e) {
-//                                         alert("Maximum connections (" + info.maxConnections + ") reached");
-//                                     }
-//                                 });
-//                             }
-
-//                             if (value['visibility'] == 1) lab_topology.makeTarget($('#network' + value['id']), {
-//                                 dropOptions: {
-//                                     hoverClass: "dragHover"
-//                                 },
-//                                 anchor: "Continuous",
-//                                 allowLoopback: false
-//                             });
-//                             adjustZoom(lab_topology, window.scroll_top || 0, window.scroll_left || 0)
-//                         });
-//                     });
-//                 }
-
-//                 $.each(topology,
-//                 function(id, link) {
-//                     var type = link['type'],
-//                     source = link['source'],
-//                     source_label = link['source_label'],
-//                     destination = link['destination'],
-//                     destination_label = link['destination_label'],
-//                     src_label = ["Label"],
-//                     dst_label = ["Label"];
-
-//                     if (type == 'ethernet') {
-//                         if (source_label != '') {
-//                             src_label.push({
-//                                 label: source_label,
-//                                 location: 0.15,
-//                                 cssClass: 'node_interface ' + source + ' ' + destination
-//                             });
-//                         } else {
-//                             src_label.push(Object());
-//                         }
-//                         if (destination_label != '') {
-//                             dst_label.push({
-//                                 label: destination_label,
-//                                 location: 0.85,
-//                                 cssClass: 'node_interface ' + source + ' ' + destination
-//                             });
-//                         } else {
-//                             dst_label.push(Object());
-//                         }
-
-//                         var tmp_conn = lab_topology.connect({
-//                             source: source,
-//                             // Must attach to the IMG's parent or not printed correctly
-//                             target: destination,
-//                             // Must attach to the IMG's parent or not printed correctly
-//                             cssClass: source + ' ' + destination + ' frame_ethernet',
-//                             paintStyle: {
-//                                 strokeWidth: 2,
-//                                 stroke: '#0066aa'
-//                             },
-//                             overlays: [src_label, dst_label]
-//                         });
-//                         if (destination.substr(0, 7) == 'network') {
-//                             $.when(getNodeInterfaces(source.replace('node', ''))).done(function(ifaces) {
-//                                 for (ikey in ifaces['ethernet']) {
-//                                     if (ifaces['ethernet'][ikey]['name'] == source_label) {
-//                                         tmp_conn.id = 'iface:' + source + ":" + ikey
-//                                     }
-//                                 }
-//                             });
-//                         } else {
-//                             tmp_conn.id = 'network_id:' + link['network_id']
-//                         }
-//                     } else {
-//                         src_label.push({
-//                             label: source_label,
-//                             location: 0.15,
-//                             cssClass: 'node_interface ' + source + ' ' + destination
-//                         });
-//                         dst_label.push({
-//                             label: destination_label,
-//                             location: 0.85,
-//                             cssClass: 'node_interface ' + source + ' ' + destination
-//                         });
-//                         var tmp_conn = lab_topology.connect({
-//                             source: source,
-//                             // Must attach to the IMG's parent or not printed correctly
-//                             target: destination,
-//                             // Must attach to the IMG's parent or not printed correctly
-//                             cssClass: source + " " + destination + ' frame_serial',
-//                             paintStyle: {
-//                                 strokeWidth: 2,
-//                                 stroke: "#ffcc00"
-//                             },
-//                             overlays: [src_label, dst_label]
-//                         });
-//                         $.when(getNodeInterfaces(source.replace('node', ''))).done(function(ifaces) {
-//                             for (ikey in ifaces['serial']) {
-//                                 if (ifaces['serial'][ikey]['name'] == source_label) {
-//                                     tmp_conn.id = 'iface:' + source + ':' + ikey
-//                                 }
-//                             }
-//                         });
-//                     }
-//                     // If destination is a network, remove the 'unused' class
-//                     if (destination.substr(0, 7) == 'network') {
-//                         $('.' + destination).removeClass('unused');
-//                     }
-//                 });
-
-//                 printLabStatus();
-
-//                 // Remove unused elements
-//                 $('.unused').remove();
-
-//                 // Move elements under the topology node
-//                 //$('._jsPlumb_connector, ._jsPlumb_overlay, ._jsPlumb_endpoint_anchor_').detach().appendTo('#lab-viewport');
-//                 // if lock then freeze node network
-//                 if (labinfo['lock'] == 1) {
-//                     window.LOCK = 1;
-//                     defer.resolve();
-//                     // if (ROLE == 'admin' || ROLE == 'editor' ) {
-//                     //      lab_topology.setDraggable($('customShape, .node_frame, .network_frame'), false );
-//                     //}
-//                     $('.action-lock-lab').html('<i style="color:red" class="glyphicon glyphicon-remove-circle"></i>' + MESSAGES[167])
-//                     $('.action-lock-lab').removeClass('action-lock-lab').addClass('action-unlock-lab')
-
-//                 }
-//                 defer.resolve(LOCK);
-//                 $labViewport.data('refreshing', false);
-//                 labNodesResolver.resolve();
-//                 lab_topology.bind("connection",
-//                 function(info, oe) {
-//                     newConnModal(info, oe);
-//                 });
-//                 // Bind contextmenu to connections
-//                 lab_topology.bind("contextmenu",
-//                 function(info) {
-//                     connContextMenu(info);
-//                 });
-//             });
-//         }).fail(function() {
-//             logger(1, "DEBUG: not all images of networks or nodes loaded");
-//             $('#lab-viewport').data('refreshing', false);
-//             labNodesResolver.reject();
-//             labTextObjectsResolver.reject();
-//         });
-
-//     }).fail(function(message1, message2, message3) {
-//         if (message1 != null) {
-//             addModalError(message1);
-//         } else if (message2 != null) {
-//             addModalError(message2)
-//         } else {
-//             addModalError(message3)
-//         }
-//         $('#lab-viewport').data('refreshing', false);
-//         labNodesResolver.reject();
-//         labTextObjectsResolver.reject();
-//         $.when(closeLab()).done(function() {
-//             newUIreturn();
-//         }).fail(function(message) {
-//             addModalError(message);
-//         });
-//     });
-
-//     $.when(labNodesResolver, labTextObjectsResolver).done(function() {
-
-//         $.when(deleteSingleNetworks()).done(function() {
-//             if ($.cookie("topo") != undefined && $.cookie("topo") == 'dark') {
-//                 $('#lab-viewport').css('background-image', 'url(/themes/adminLTE/unl_data/img/grid-dark.png)');
-//                 $('.node_name').css('color', '#b8c7ce')
-//                 $('.network_name').css('color', '#b8c7ce')
-//             }
-//             $("#loading-lab").remove();
-//             $("#lab-sidebar *").show();
-//         })
-
-//     }).fail(function(message1, message2) {
-//         if (message1 != null) {
-//             addModalError(message1);
-//         } else if (message2 != null) {
-//             addModalError(message2)
-//         }
-//         $("#loading-lab").remove();
-//         $("#lab-sidebar ul").show();
-//         $("#lab-sidebar ul li:lt(11)").hide();
-//     });
-//     return defer.promise();
-// }
 
 // Display lab status
 function printLabStatus() {
@@ -4653,34 +4200,30 @@ function printPageLabOpen(lab) {
         }
         $('#lab-sidebar ul').append('<li><a class="action-labtopologyrefresh" href="javascript:void(0)" title="' + MESSAGES[57] + '"><i class="glyphicon glyphicon-refresh"></i></a></li>');
         $('#lab-sidebar ul').append('<li><a class="action-labbodyget" href="javascript:void(0)" title="' + MESSAGES[64] + '"><i class="glyphicon glyphicon-list-alt"></i></a></li>');
-        $('#lab-sidebar ul').append('<li class="action-status-bar"><a class="action-status" href="javascript:void(0)" title="' + MESSAGES[13] + '"><i class="glyphicon glyphicon-info-sign"></i></a></li>');
-        if ((ROLE == 'admin' || ROLE == 'editor') && LOCK == 0) {
-            $('#lab-sidebar ul').append('<li class="action-configsget-li"><a class="action-configsget" href="javascript:void(0)" title="' + MESSAGES[58] + '"><i class="glyphicon glyphicon-align-left"></i></a></li>');
+        if (ROLE == 'admin' || ROLE == 'editor') {
+            $('#lab-sidebar ul').append('<li><a class="action-labedit" href="javascript:void(0)" title="' + MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i></a></li>');
         }
-        $('#lab-sidebar ul').append('<li><a class="action-objects_box" href="javascript:void(0)" title="' + MESSAGES[267] + '"><i class="glyphicon glyphicon-folder-open"></i></a></li>');
-
-        // $('#lab-sidebar ul').append('<li class="action-nodesget-li"><a class="action-nodesget" href="javascript:void(0)" title="' + MESSAGES[62] + '"><i class="glyphicon glyphicon-hdd"></i></a></li>');
-        // $('#lab-sidebar ul').append('<li><a class="action-networksget" href="javascript:void(0)" title="' + MESSAGES[61] + '"><i class="glyphicon glyphicon-transfer"></i></a></li>');
-        // $('#lab-sidebar ul').append('<li class="action-picturesget-li"><a class="action-picturesget" href="javascript:void(0)" title="' + MESSAGES[59] + '"><i class="glyphicon glyphicon-picture"></i></a></li>');
+        $('#lab-sidebar ul').append('<li class="action-status-bar"><a class="action-status" href="javascript:void(0)" title="' + MESSAGES[13] + '"><i class="glyphicon glyphicon-info-sign"></i></a></li>');
+        $('#lab-sidebar ul').append('<li class="action-nodes-li"><a class="action-nodes-li" href="javascript:void(0)" title="' + MESSAGES[62] + '"><i class="glyphicon glyphicon-hdd"></i></a></li>');
+        if ((ROLE == 'admin' || ROLE == 'editor') && LOCK == 0) {
+            $('#lab-sidebar ul').append('<li class="action-startupconfigs"><a class="action-startupconfigs" href="javascript:void(0)" title="' + MESSAGES[58] + '"><i class="glyphicon glyphicon-align-left"></i></a></li>');
+        }
+        $('#lab-sidebar ul').append('<li><a class="action-networksget" href="javascript:void(0)" title="' + MESSAGES[61] + '"><i class="glyphicon glyphicon-transfer"></i></a></li>');
+        $('#lab-sidebar ul').append('<li><a class="action-textobjectsget" href="javascript:void(0)" title="' + MESSAGES[150] + '"><i class="glyphicon glyphicon-text-background"></i></a></li>');
+        $('#lab-sidebar ul').append('<li class="action-picturesget-li"><a class="action-picturesget" href="javascript:void(0)" title="' + MESSAGES[59] + '"><i class="glyphicon glyphicon-picture"></i></a></li>');
         if (Object.keys(pic) < 1) {
             $('.action-picturesget-li').addClass('hidden');
         }
-
-        // $('#lab-sidebar ul').append('<li><a class="action-textobjectsget" href="javascript:void(0)" title="' + MESSAGES[150] + '"><i class="glyphicon glyphicon-text-background"></i></a></li>');
-        $('#lab-sidebar ul').append('<li><a class="action-moreactions" href="javascript:void(0)" title="' + MESSAGES[125] + '"><i class="glyphicon glyphicon-th"></i></a></li>');
-        if ((ROLE == 'admin' || ROLE == 'editor')) {
-            $('#lab-sidebar ul').append('<li><a class="action-tool_box" href="javascript:void(0)" title="' + MESSAGES[247] + '"><i class="glyphicon glyphicon-briefcase"></i></a></li>');
-        }
+        $('#lab-sidebar ul').append('<li><a class="action-download_box" href="javascript:void(0)" title="' + MESSAGES[266] + '"><i class="fa fa-download"></i></a></li>');
         // $('#lab-sidebar ul').append('<li><a class="action-freeselect" href="javascript:void(0)" title="' + MESSAGES[151] + '"><i class="glyphicon glyphicon-check"></i></a></li>');
-        // $('#lab-sidebar ul').append('<li><a class="action-Connectors" href="javascript:void(0)"><i class="glyphicon glyphicon-link"></i> ' + MESSAGES[262] + '</a></li>');
         if ($.cookie("topo") == 'dark') {
             $('#lab-sidebar ul').append('<li><a class="action-lightmode" href="javascript:void(0)" title="' + MESSAGES[236] + '"><i class="fas fa-sun"></i></a></li>');
         } else {
             $('#lab-sidebar ul').append('<li><a class="action-nightmode" href="javascript:void(0)" title="' + MESSAGES[235] + '"><i class="fas fa-moon"></i></a></li>');
         }
-	if ((ROLE == 'admin'|| ROLE == 'editor')) {
-        	$('#lab-sidebar ul').append('<li><a class="action-lock-lab" href="javascript:void(0)" title="' + MESSAGES[166] + '"><i class="glyphicon glyphicon-ok-circle"></i></a></li>');
-	}
+        if ((ROLE == 'admin'|| ROLE == 'editor')) {
+                $('#lab-sidebar ul').append('<li><a class="action-lock-lab" href="javascript:void(0)" title="' + MESSAGES[166] + '"><i class="glyphicon glyphicon-ok-circle"></i></a></li>');
+        }
         $('#lab-sidebar ul').append('<div id="action-labclose"><li><a class="action-labclose" href="javascript:void(0)" title="' + MESSAGES[60] + '"><i class="glyphicon glyphicon-off"></i></a></li></div>');
         $('#lab-sidebar ul').append('<li><a class="action-logout" href="javascript:void(0)" title="' + MESSAGES[14] + '"><i class="glyphicon glyphicon-log-out"></i></a></li>');
         $('#lab-sidebar ul a').each(function() {
@@ -5382,15 +4925,7 @@ function textObjectResize(event, ui, shape_options) {
 
 function printFormConnStyle(a) {
     getTopology().done(function(k) {
-        var d = ["Solid", "Dashed"],
-        b = {},
-        l,
-        h = ["Straight", "Bezier", "Flowchart", "StateMachine"],
-        e,
-        c,
-        j,
-        n,
-        m;
+        var d = ["Solid", "Dashed"], b = {}, l, h = ["Straight", "Bezier", "Flowchart", "StateMachine"], e, c, j, n, m;
         tmpconn = lab_topology.getConnections().find(function(o) {
             return o.id == a
         });

@@ -264,6 +264,76 @@ class Interfc {
 			$this -> dstpos = 0.85;
 			$modified = True;
 		}
+		if (isset($p['destination_bandwidth'])) {
+			$this -> destination_bandwidth = (int) $p['destination_bandwidth'];
+			$modified = True;
+		} else {
+			$this -> destination_bandwidth = 0;
+			$modified = True;
+		}
+		if (isset($p['destination_delay'])) {
+			$this -> destination_delay = (int) $p['destination_delay'];
+			$modified = True;
+		} else {
+			$this -> destination_delay = 0;
+			$modified = True;
+		}
+		if (isset($p['destination_jitter'])) {
+			$this -> destination_jitter = (int) $p['destination_jitter'];
+			$modified = True;
+		} else {
+			$this -> destination_jitter = 0;
+			$modified = True;
+		}
+		if (isset($p['destination_loss'])) {
+			$this -> destination_loss = (int) $p['destination_loss'];
+			$modified = True;
+		} else {
+			$this -> destination_loss = 0;
+			$modified = True;
+		}
+		if (isset($p['destination_suspend'])) {
+			$this -> destination_suspend = (int) $p['destination_suspend'];
+			$modified = True;
+		} else {
+			$this -> destination_suspend = 0;
+			$modified = True;
+		}
+		if (isset($p['source_bandwidth'])) {
+			$this -> source_bandwidth = (int) $p['source_bandwidth'];
+			$modified = True;
+		} else {
+			$this -> source_bandwidth = 0;
+			$modified = True;
+		}
+		if (isset($p['source_delay'])) {
+			$this -> source_delay = (int) $p['source_delay'];
+			$modified = True;
+		} else {
+			$this -> source_delay = 0;
+			$modified = True;
+		}
+		if (isset($p['source_jitter'])) {
+			$this -> source_jitter = (int) $p['source_jitter'];
+			$modified = True;
+		} else {
+			$this -> source_jitter = 0;
+			$modified = True;
+		}
+		if (isset($p['source_loss'])) {
+			$this -> source_loss = (int) $p['source_loss'];
+			$modified = True;
+		} else {
+			$this -> source_loss = 0;
+			$modified = True;
+		}
+		if (isset($p['source_suspend'])) {
+			$this -> source_suspend = (int) $p['source_suspend'];
+			$modified = True;
+		} else {
+			$this -> source_suspend = 0;
+			$modified = True;
+		}
 
 		if ($modified) {
 			// At least an attribute is changed

@@ -361,9 +361,9 @@ function(e) {
             if (ROLE != "user" && LOCK != 1) {
                 a += '<li><a class="action-connstyle" href="javascript:void(0)"><i class="glyphicon glyphicon-tint"></i> Edit Style</a></li>'
             }
-            // if ($(window.connToDel.canvas).hasClass("frame_serial") == false) {
-            //     a += '<li><a class="action-connquality" href="javascript:void(0)"><i class="fas fa-heartbeat"></i> Edit Quality</a></li>'
-            // }
+            if ($(window.connToDel.canvas).hasClass("frame_serial") == false) {
+                a += '<li><a class="action-connquality" href="javascript:void(0)"><i class="fas fa-heartbeat"></i> Edit Quality</a></li>'
+            }
             if ($("#" + window.connToDel.sourceId).attr("data-linkstate") == 1 || $("#" + window.connToDel.targetId).attr("data-linkstate") == 1) {
                 if (window.connToDel.id.search("iface") != -1) {
                     var d = window.connToDel.targetId.replace("network", "");
@@ -1085,21 +1085,15 @@ function(e) {
 });
 
 // Action menu
-$(document).on('click', '.action-moreactions',
+$(document).on('click', '.action-nodes-li',
 function(e) {
-    logger(1, 'DEBUG: action = moreactions');
+    logger(1, 'DEBUG: action = nodeactions');
     var body = '';
+    body += '<li><a class="action-nodesget" href="javascript:void(0)"><i class="glyphicon glyphicon-hdd"></i> ' + MESSAGES[262] + '</a></li>';
     body += '<li><a class="action-nodesstart" href="javascript:void(0)"><i class="glyphicon glyphicon-play"></i> ' + MESSAGES[126] + '</a></li>';
     body += '<li><a class="action-nodesstop" href="javascript:void(0)"><i class="glyphicon glyphicon-stop"></i> ' + MESSAGES[127] + '</a></li>';
     body += '<li><a class="action-nodeswipe" href="javascript:void(0)"><i class="glyphicon glyphicon-erase"></i> ' + MESSAGES[128] + '</a></li>';
     body += '<li><a class="action-openconsole-all" href="javascript:void(0)"><i class="glyphicon glyphicon-console"></i> ' + MESSAGES[168] + '</a></li>';
-    if ((ROLE == 'admin' || ROLE == 'editor') && LOCK == 0) {
-        body += '<li><a class="action-nodesexport" href="javascript:void(0)"><i class="glyphicon glyphicon-save"></i> ' + MESSAGES[129] + '</a></li>';
-        body += '<li><a class="action-labedit" href="javascript:void(0)"><i class="glyphicon glyphicon-pencil"></i> ' + MESSAGES[87] + '</a></li>';
-        body += '<li><a class="action-nodesbootsaved" href="javascript:void(0)"><i class="glyphicon glyphicon-flash"></i> ' + MESSAGES[139] + '</a></li>';
-        body += '<li><a class="action-nodesbootscratch" href="javascript:void(0)"><i class="glyphicon glyphicon-remove"></i> ' + MESSAGES[140] + '</a></li>';
-        body += '<li><a class="action-nodesbootdelete" href="javascript:void(0)"><i class="glyphicon glyphicon-erase"></i> ' + MESSAGES[141] + '</a></li>';
-    }
     printContextMenu(MESSAGES[125], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
 });
 
@@ -1118,20 +1112,17 @@ function(e) {
 
 });
 
-// Objects box
-$(document).on('click', '.action-objects_box',
+//Startup Config
+$(document).on('click', '.action-startupconfigs',
 function(e) {
-    logger(1, 'DEBUG: action = objects box Menu');
+    logger(1, 'DEBUG: action = action-startupconfigs');
     var body = '';
-    body += '<li class="action-nodesget-li"><a class="action-nodesget" href="javascript:void(0)" title="' +
-            MESSAGES[62] + '"><i class="glyphicon glyphicon-hdd"></i>' + MESSAGES[62] + '</a></li>';
-    body += '<li><a class="action-networksget" href="javascript:void(0)" title="' + 
-            MESSAGES[61] + '"><i class="glyphicon glyphicon-transfer"></i>' + MESSAGES[61] + '</a></li>';
-    body += '<li class="action-picturesget-li"><a class="action-picturesget" href="javascript:void(0)" title="' + 
-            MESSAGES[59] + '"><i class="glyphicon glyphicon-picture"></i>' + MESSAGES[59] + '</a></li>';
-    body += '<li><a class="action-textobjectsget" href="javascript:void(0)" title="' + 
-            MESSAGES[150] + '"><i class="glyphicon glyphicon-text-background"></i>' + MESSAGES[150] + '</a></li>';
-    printContextMenu(MESSAGES[267], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
+    body += '<li><a class="action-configsget" href="javascript:void(0)"><i class="glyphicon glyphicon-align-left"></i>' + MESSAGES[267] + '</a></li>'
+    body += '<li><a class="action-nodesexport" href="javascript:void(0)"><i class="glyphicon glyphicon-save"></i> ' + MESSAGES[129] + '</a></li>';
+    body += '<li><a class="action-nodesbootsaved" href="javascript:void(0)"><i class="glyphicon glyphicon-flash"></i> ' + MESSAGES[139] + '</a></li>';
+    body += '<li><a class="action-nodesbootscratch" href="javascript:void(0)"><i class="glyphicon glyphicon-remove"></i> ' + MESSAGES[140] + '</a></li>';
+    body += '<li><a class="action-nodesbootdelete" href="javascript:void(0)"><i class="glyphicon glyphicon-erase"></i> ' + MESSAGES[141] + '</a></li>';
+    printContextMenu(MESSAGES[247], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
 });
 
 //download box
@@ -1144,29 +1135,7 @@ function(e) {
     body += '<li><a href="/files/EVE-ClientPack.dmg"><i class="fa fa-file"></i> ' + "MacOS Client Package" + '</a></li>';
     body += '<li><a href="/files/osx.zip"><i class="fa fa-file"></i> ' + "MacOS Manually Package" + '</a></li>';
     body += '<li><a href="https://github.com/SmartFinn/eve-ng-integration" target="_blank"><i class="fa fa-file"></i> ' + "Linux Environment Integration" + '</a></li>';
-    printContextMenu(MESSAGES[247], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
-});
-
-// Tool box
-$(document).on('click', '.action-tool_box',
-function(e) {
-    logger(1, 'DEBUG: action = tool box Menu');
-    var body = '';
-    body += '<li><a class="action-fix_permissions" href="javascript:void(0)"><i class="glyphicon glyphicon-wrench"></i> ' + MESSAGES[238] + '</a></li>';
-    body += '<li><a class="action-generate_ioulic" href="javascript:void(0)"><i class="glyphicon glyphicon-credit-card"></i> ' + MESSAGES[239] + '</a></li>';
-    body += '<li><a class="action-download_box" href="javascript:void(0)"><i class="fa fa-download"></i>' + MESSAGES[266] + '</a></li>';
-    printContextMenu(MESSAGES[247], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
-});
-
-// Connectors Type Menu
-$(document).on('click', '.action-Connectors',
-function(e) {
-    logger(1, 'DEBUG: action = Connectors Menu');
-    var body = '';
-    body += '<li><a class="action-straight" href="javascript:void(0)"><i class="glyphicon glyphicon-sort"></i> ' + MESSAGES[263] + '</a></li>';
-    body += '<li><a class="action-flowchart" href="javascript:void(0)"><i class="glyphicon glyphicon-retweet"></i> ' + MESSAGES[264] + '</a></li>';
-    body += '<li><a class="action-bezier" href="javascript:void(0)"><i class="glyphicon glyphicon-random"></i> ' + MESSAGES[265] + '</a></li>';
-    printContextMenu(MESSAGES[262], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", false);
+    printContextMenu(MESSAGES[266], body, e.pageX + 3, e.pageY + 3, true, "sidemenu", true);
 });
 
 // Fix Permissions,danger|warning|success
@@ -4099,6 +4068,11 @@ $("body").on("click", ".edit-line-style-form .cancelForm", function(m) {
     $(".edit-line-style-form").remove()
 });
 
+$("body").on("click", ".edit-link-quality-form .cancelForm",
+function(a) {
+    $(".edit-link-quality-form").remove()
+});
+
 $(document).on("submit", ".edit-network-style-form", function(g) {
     g.preventDefault();
     var i = form2Array("network");
@@ -4173,6 +4147,82 @@ $(document).on("submit", ".edit-line-style-form", function(g) {
     });
     return false
 });
+
+$(document).on("submit", ".edit-link-quality-form",
+function(g) {
+    g.preventDefault();
+    $(".frameoverlay").css("width", "calc( 100% - 20px)");
+    var h = form2Array("link");
+    var d = $("#lab-viewport").attr("data-path");
+    var b = [];
+    var a = "/api/labs" + d + "/qualitysave";
+    var c = "PUT";
+    var f = $.ajax({
+        cache: false,
+        timeout: TIMEOUT,
+        type: c,
+        url: encodeURI(a),
+        dataType: "json",
+        data: JSON.stringify(h),
+        success: function(e) {
+            if (e.status == "success") {
+                logger(1, 'DEBUG: network "' + h.name + '" saved.');
+                addMessage(e.status, e.message)
+            } else {
+                logger(1, "DEBUG: application error (" + e.status + ") on " + c + " " + a + " (" + e.message + ").");
+                addModal("ERROR", "<p>" + e.message + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+            }
+        },
+        error: function(i) {
+            var e = getJsonMessage(i.responseText);
+            logger(1, "DEBUG: server error (" + i.status + ") on " + c + " " + a + ".");
+            logger(1, "DEBUG: " + e);
+            addModal("ERROR", "<p>" + e + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+        }
+    });
+    b.push(f);
+    $.when.apply(null, b).done(function() {
+        $("#edit-link-quality-form").remove()
+    });
+    return false
+});
+$(document).on("click", ".edit-link-quality-form-apply",
+function(g) {
+    g.preventDefault();
+    $(".frameoverlay").css("width", "calc( 100% - 20px)");
+    var h = form2Array("link");
+    h.save = 0;
+    var d = $("#lab-viewport").attr("data-path");
+    var b = [];
+    var a = "/api/labs" + d + "/qualityapply";
+    var c = "PUT";
+    var f = $.ajax({
+        cache: false,
+        timeout: TIMEOUT,
+        type: c,
+        url: encodeURI(a),
+        dataType: "json",
+        data: JSON.stringify(h),
+        success: function(e) {
+            if (e.status == "success") {
+                logger(1, 'DEBUG: network "' + h.name + '" saved.');
+                addMessage(e.status, e.message)
+            } else {
+                logger(1, "DEBUG: application error (" + e.status + ") on " + c + " " + a + " (" + e.message + ").");
+                addModal("ERROR", "<p>" + e.message + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+            }
+        },
+        error: function(i) {
+            var e = getJsonMessage(i.responseText);
+            logger(1, "DEBUG: server error (" + i.status + ") on " + c + " " + a + ".");
+            logger(1, "DEBUG: " + e);
+            addModal("ERROR", "<p>" + e + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
+        }
+    });
+    b.push(f);
+    return false
+});
+
 
 $(document).on("dblclick", ".customText",
 function(a) {

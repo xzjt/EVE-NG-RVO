@@ -245,6 +245,38 @@ function addTap($s, $u) {
 }
 
 /**
+ * Function to set quality of interface
+ *
+ * @param   Array  $p                  Interface and Quality Parameter
+ * @return  int                         0 means ok
+ */
+function SetQuality($p) {
+	
+	$i = isset($p['destination_interface']) ? Array($p['source_interface'], $p['destination_interface']) : Array($p['source_interface']);
+	$delay = Array($p['source_delay'], $p['destination_delay']);
+	$jitter = Array($p['source_jitter'], $p['destination_jitter']);
+	$loss = Array($p['source_loss'], $p['destination_loss']);
+	$bandwidth = Array($p['source_bandwidth'], $p['destination_bandwidth']);
+
+	foreach ($i as $key => $value) {
+
+		$cmd = 'sudo tc qdisc replace dev '.$value.' root netem delay '.$delay[$key].'ms '.$jitter[$key].'ms'.' loss '.
+		$loss[$key].' rate '.$bandwidth[$key].'Kbit 2>&1';
+		
+		exec($cmd, $o, $rc);
+		if ($rc != 0) {
+			// Failed to set delay and jitter on interface
+			error_log(date('M d H:i:s ').'ERROR: '.$GLOBALS['messages'][80092]);
+			error_log(date('M d H:i:s ').implode("\n", $o));
+			return 80092;
+		}
+	}
+	
+	return 0;
+}
+
+
+/**
  * Function to check if a tenant has a valid username.
  *
  * @param   int     $i                  Tenant ID

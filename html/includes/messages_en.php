@@ -227,6 +227,9 @@ $messages[60063] = 'Successfully change cpulimit (60063).';
 $messages[60064] = 'Failed change cpulimit (60064).';
 $messages[60065] = 'Successfully change uksm (60065).';
 $messages[60066] = 'Failed change uksm (60066).';
+$messages[60067] = 'Node of action is selected (60067).';
+$messages[60068] = 'Set quality of interface failed (60068).';
+$messages[60069] = 'Lab quality has been applied (60069).';
 
 // Text (70000-79999)
 $messages[70000] = 'Name/prefix';
@@ -343,6 +346,7 @@ $messages[80088] = 'Cannot find vpcs installation (80088).';
 $messages[80089] = 'Cannot disable ipv6 (80089).';
 $messages[80090] = 'Cannot delete interface to bridge (80030).';
 $messages[80091] = 'Cannot delete interface to OVS (80031).';
+$messages[80092] = 'Cannot set delay, jitter, bandwidth and loss on current interface (80092).';
 
 // Authentication (90000-99999)
 $messages[90001] = 'User is not authenticated or session timed out (90001).';

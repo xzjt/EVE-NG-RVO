@@ -300,6 +300,7 @@ class Lab {
 				foreach ($node -> interface as $interface) {
 					// Loading configured interfaces for this node
 					$i = Array();
+					// Network link Style
 					if (isset($interface -> attributes() -> id)) $i['id'] = (string) $interface -> attributes() -> id;
 					if (isset($interface -> attributes() -> network_id)) $i['network_id'] = (string) $interface -> attributes() -> network_id;
 					if (isset($interface -> attributes() -> remote_id)) $i['remote_id'] = (string) $interface -> attributes() -> remote_id;
@@ -318,6 +319,17 @@ class Lab {
 					if (isset($interface -> attributes() -> srcpos)) $i['srcpos'] = (string) $interface -> attributes() -> srcpos;
 					if (isset($interface -> attributes() -> dstpos)) $i['dstpos'] = (string) $interface -> attributes() -> dstpos;
 					if (isset($interface -> attributes() -> type)) $i['type'] = (string) $interface -> attributes() -> type;
+					// Network link Quality
+					if (isset($interface -> attributes() -> destination_bandwidth)) $i['destination_bandwidth'] = (int) $interface -> attributes() -> destination_bandwidth;
+					if (isset($interface -> attributes() -> destination_delay)) $i['destination_delay'] = (int) $interface -> attributes() -> destination_delay;
+					if (isset($interface -> attributes() -> destination_jitter)) $i['destination_jitter'] = (int) $interface -> attributes() -> destination_jitter;
+					if (isset($interface -> attributes() -> destination_loss)) $i['destination_loss'] = (int) $interface -> attributes() -> destination_loss;
+					if (isset($interface -> attributes() -> destination_suspend)) $i['destination_suspend'] = (int) $interface -> attributes() -> destination_suspend;
+					if (isset($interface -> attributes() -> source_bandwidth)) $i['source_bandwidth'] = (int) $interface -> attributes() -> source_bandwidth;
+					if (isset($interface -> attributes() -> source_delay)) $i['source_delay'] = (int) $interface -> attributes() -> source_delay;
+					if (isset($interface -> attributes() -> source_jitter)) $i['source_jitter'] = (int) $interface -> attributes() -> source_jitter;
+					if (isset($interface -> attributes() -> source_loss)) $i['source_loss'] = (int) $interface -> attributes() -> source_loss;
+					if (isset($interface -> attributes() -> source_suspend)) $i['source_suspend'] = (int) $interface -> attributes() -> source_suspend;
 					switch ($i['type']) {
 						default:
 							error_log(date('M d H:i:s ').'WARNING: '.$f.':node'.$n['id'].':inv'.$s['id'].' '.$GLOBALS['messages'][20016]);
@@ -1215,16 +1227,18 @@ class Lab {
 					}
 				}
 
-				if ($this -> networks[$interface_link] -> isCloud()) {
-					// Network is a Cloud
-					$net_name = $this -> networks[$interface_link] -> getNType();
-				} else {
-					$net_name = 'vnet'.$this -> getTenant().'_'.$interface_link;
-				}
-				$node_interface = 'vunl'.$this -> getTenant().'_'.$n.'_'.$interface_id;
-				$rc = disconnectInterface($net_name, $node_interface);
-				if ($this -> networks[$interface_link] -> getCount() == 1 && preg_match('/vnet[0-9]+/', $net_name)) {
-					$rc = delBridge($net_name);
+				if (isset($this -> networks[$interface_link])) {
+					if ($this -> networks[$interface_link] -> isCloud()) {
+						// Network is a Cloud
+						$net_name = $this -> networks[$interface_link] -> getNType();
+					} else {
+						$net_name = 'vnet'.$this -> getTenant().'_'.$interface_link;
+					}
+					$node_interface = 'vunl'.$this -> getTenant().'_'.$n.'_'.$interface_id;
+					$rc = disconnectInterface($net_name, $node_interface);
+					if ($this -> networks[$interface_link] -> getCount() == 1 && preg_match('/vnet[0-9]+/', $net_name)) {
+						$rc = delBridge($net_name);
+					}
 				}
 
 				// Now deconfigure local interface
@@ -1383,6 +1397,16 @@ class Lab {
 							$e -> addAttribute('midpoint', $interface -> midpoint);
 							$e -> addAttribute('srcpos', $interface -> srcpos);
 							$e -> addAttribute('dstpos', $interface -> dstpos);
+							$e -> addAttribute('destination_bandwidth', $interface -> destination_bandwidth);
+							$e -> addAttribute('destination_delay', $interface -> destination_delay);
+							$e -> addAttribute('destination_jitter', $interface -> destination_jitter);
+							$e -> addAttribute('destination_loss', $interface -> destination_loss);
+							$e -> addAttribute('destination_suspend', $interface -> destination_suspend);
+							$e -> addAttribute('source_bandwidth', $interface -> source_bandwidth);
+							$e -> addAttribute('source_delay', $interface -> source_delay);
+							$e -> addAttribute('source_jitter', $interface -> source_jitter);
+							$e -> addAttribute('source_loss', $interface -> source_loss);
+							$e -> addAttribute('source_suspend', $interface -> source_suspend);
 						}
 					}
 
@@ -1395,6 +1419,28 @@ class Lab {
 							$e -> addAttribute('name', $interface -> getName());
 							$e -> addAttribute('remote_id', $interface -> getRemoteId());
 							$e -> addAttribute('remote_if', $interface -> getRemoteIf());
+							$e -> addAttribute('color', $interface -> color);
+							$e -> addAttribute('style', $interface -> style);
+							$e -> addAttribute('linkstyle', $interface -> linkstyle);
+							$e -> addAttribute('label', $interface -> label);
+							$e -> addAttribute('labelpos', $interface -> labelpos);
+							$e -> addAttribute('stub', $interface -> stub);
+							$e -> addAttribute('curviness', $interface -> curviness);
+							$e -> addAttribute('beziercurviness', $interface -> beziercurviness);
+							$e -> addAttribute('round', $interface -> round);
+							$e -> addAttribute('midpoint', $interface -> midpoint);
+							$e -> addAttribute('srcpos', $interface -> srcpos);
+							$e -> addAttribute('dstpos', $interface -> dstpos);
+							$e -> addAttribute('destination_bandwidth', $interface -> destination_bandwidth);
+							$e -> addAttribute('destination_delay', $interface -> destination_delay);
+							$e -> addAttribute('destination_jitter', $interface -> destination_jitter);
+							$e -> addAttribute('destination_loss', $interface -> destination_loss);
+							$e -> addAttribute('destination_suspend', $interface -> destination_suspend);
+							$e -> addAttribute('source_bandwidth', $interface -> source_bandwidth);
+							$e -> addAttribute('source_delay', $interface -> source_delay);
+							$e -> addAttribute('source_jitter', $interface -> source_jitter);
+							$e -> addAttribute('source_loss', $interface -> source_loss);
+							$e -> addAttribute('source_suspend', $interface -> source_suspend);
 						}
 					}
 				}

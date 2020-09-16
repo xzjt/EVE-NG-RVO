@@ -6,8 +6,8 @@ It supports hot-plugin, definitely supports hot-plugout as well!
 
 # Useage
 
-1. Download the community version 203.110 from EVE-NG offical  
-
+1. Download the community version 203.110 from EVE-NG offcial  
+i
     or download it from the given link below
     ```
     Link:https://pan.baidu.com/s/11Wa10xZ-2q6yGEvbHhr5FA

@@ -13,6 +13,8 @@
  * @version 20160719
  */
 
+require_once('/opt/unetlab/html/includes/cli.php');
+
 /**
  * Function to add a network to a lab.
  *
@@ -131,26 +133,30 @@ function apiEditLabNetworks($lab, $p) {
 	return $output;
 }
 
-
+/**
+ * Function to edit link style.
+ *
+ * @param   Lab     $lab                Lab
+ * @param   linkArritbute    $p         Link Attribute
+ * @return  Array                       Lab code (JSend data)
+ */
 function apiEditlinkstyle($lab, $p) {
 	// Save linksytle
-	$f = fopen('/tmp/zb.log','a+');
-	fwrite($f, PHP_EOL.date('Y-m-d H:i:s').json_encode('This is break point2').PHP_EOL);
-	fclose($f);
 	foreach ($lab -> getNodes() as $node_id => $node) {
-		if ((int) $p['node'] == $node_id) {
-			$f = fopen('/tmp/zb.log','a+');
-			fwrite($f, PHP_EOL.date('Y-m-d H:i:s').json_encode('This is break point3').PHP_EOL);
-			fclose($f);
-			foreach ($node -> getInterfaces() as  $interface_id => $interface) {
-				if ($interface_id == (int) $p['interface_id']) {
-					$f = fopen('/tmp/zb.log','a+');
-					fwrite($f, PHP_EOL.date('Y-m-d H:i:s').json_encode('This is break point4').PHP_EOL);
-					fclose($f);
+		if ((int) $p['node'] == $node_id && $p['type'] == 'serial') {
+			foreach ($node -> getSerials() as $interface_id => $interface) {
+				$id_array = explode(':', $p['id']);
+				if ($interface_id == (int) end($id_array)) {
 					$rc = $interface -> edit($p);
 				}
 			}
-		}
+		} else if ((int) $p['node'] == $node_id) {
+			foreach ($node -> getInterfaces() as $interface_id => $interface) {
+				if ($interface_id == (int) $p['interface_id']) {
+					$rc = $interface -> edit($p);
+				}
+			}
+		} 
 	}
 
 	if ($rc == 0) {
@@ -168,6 +174,67 @@ function apiEditlinkstyle($lab, $p) {
 	}
 	return $output;
 }
+
+function apiSetQuality($lab, $p) {
+	// Set link Quality
+	foreach ($lab -> getNodes() as $node_id => $node) {
+		if ($node_id == $p['source']) {
+			foreach ($node -> getInterfaces() as  $interface_id => $interface) {
+				if ($interface_id == $p['source_interfaceId']) {
+					$p['source_interface'] = 'vunl'.$lab -> getTenant().'_'.$node_id.'_'.$interface_id;
+					$rc = $interface -> edit($p);
+					if ($rc != 0) {
+						$output['code'] = 400;
+						$output['status'] = 'fail';
+						$output['message'] = $GLOBALS['messages'][60068];
+						return $output;
+					}
+				}
+			}
+		}
+		// Check if destination is network
+		if ($node_id == $p['destination']) {
+			foreach ($node -> getInterfaces() as  $interface_id => $interface) {
+				if ($interface_id == $p['destination_interfaceId']) {
+					$p['destination_interface'] = 'vunl'.$lab -> getTenant().'_'.$node_id.'_'.$interface_id;
+					$rc = $interface -> edit($p);
+					if ($rc != 0) {
+						$output['code'] = 400;
+						$output['status'] = 'fail';
+						$output['message'] = $GLOBALS['messages'][60068];
+						return $output;
+					}
+				}
+			}
+		}
+	}
+
+	$rc = SetQuality($p);
+	
+	if ($p['save'] == '1' && $rc == 0) {
+		$rc = $lab -> save();	
+		if ($rc == 0) {
+			$output['code'] = 201;
+			$output['status'] = 'success';
+			$output['message'] = $GLOBALS['messages'][60023];
+		} else {
+			$output['code'] = 400;
+			$output['status'] = 'fail';
+			$output['message'] = $GLOBALS['messages'][$rc];
+		}
+	} else if ($rc == 0) {
+		$output['code'] = 201;
+		$output['status'] = 'success';
+		$output['message'] = $GLOBALS['messages'][60069];
+	} else {
+		$output['code'] = 400;
+		$output['status'] = 'fail';
+		$output['message'] = $GLOBALS['messages'][$rc];
+	}
+
+	return $output;
+}
+
 
 /**
  * Function to get a single lab network.

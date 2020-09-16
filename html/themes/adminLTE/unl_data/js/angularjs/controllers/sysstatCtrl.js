@@ -128,6 +128,7 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
                         );
         }
         // Stop All Nodes //STOP
+
 }
 // set cpulimit
 function setCpuLimit(bool) {

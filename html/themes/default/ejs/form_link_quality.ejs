@@ -42,8 +42,8 @@
             <input type="number" name="link[destination_bandwidth]" min="0" max="10000000" class="form-control link-destination_bandwidth" data-path="<%=id%>" value="<%=destination_bandwidth%>">
             </div>
 	</div>
-    <div class="row col-md-3 btn-part">
-        <button type="button" class="btn btn-success edit-link-quality-form-apply" data-path="<%=id%>"><%=MESSAGES[228]%></button>
+    <div class="row col-md-3 btn-part"  style="top: 47px;">
+        <button type="button" class="btn btn-success edit-link-quality-form-apply" data-path="<%=id%>"><%=MESSAGES[268]%></button>
         <% if ( ROLE != "user" && LOCK != 1) { %>
         <button type="submit" class="btn btn-success edit-link-quality-form-save" data-path="<%=id%>"><%=MESSAGES[47]%></button>
 	<% } %>
