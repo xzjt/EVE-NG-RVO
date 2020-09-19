@@ -3,11 +3,19 @@ This is redevelop of EVE-NG Community version 203.110.
 
 It supports hot-plugin, definitely supports hot-plugout as well!
 
+Update 2020920:
+
+    ```
+    Link Quality Editable
+    Serial port link style Editable
+    Fix a bit bugs
+    ```
+
 
 # Useage
 
 1. Download the community version 203.110 from EVE-NG offcial  
-i
+
     or download it from the given link below
     ```
     Link:https://pan.baidu.com/s/11Wa10xZ-2q6yGEvbHhr5FA
