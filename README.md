@@ -24,7 +24,7 @@ Update 2020920
 
     ```shell
 
-    git clone https://github.com/petetong1989/EVE-NG-COMM-Redevelop.git
+    git clone https://github.com/petetong1989/EVE-NG-RVO.git
     
     ```
 
@@ -33,7 +33,7 @@ Update 2020920
     ```shell
     
     cd EVE-NG-COMM-Redevelop
-    sudo chmod +x deployEVEnewCode.sh
+    sudo chmod +x deploy.sh
     ./deployEVEnewCode.sh
     
     ```
