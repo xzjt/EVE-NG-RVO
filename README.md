@@ -32,9 +32,9 @@ Update 2020920
 
     ```shell
     
-    cd EVE-NG-COMM-Redevelop
+    cd EVE-NG-RVO
     sudo chmod +x deploy.sh
-    ./deployEVEnewCode.sh
+    ./deploy.sh
     
     ```
 
