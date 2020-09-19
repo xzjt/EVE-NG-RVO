@@ -4,11 +4,11 @@ This is redevelop of EVE-NG Community version 203.110.
 It supports hot-plugin, definitely supports hot-plugout as well!
 
 Update 2020920
-
-    Link Quality Editable
-    Serial port link style Editable
-    Fix a bit bugs
-
+```
+Link Quality Editable
+Serial port link style Editable
+Fix a bit bugs
+```
 
 # Useage
 
