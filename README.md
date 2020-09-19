@@ -1,4 +1,4 @@
-# EVE-NG-COMM-Redevelop
+# EVE-NG-EVO
 This is redevelop of EVE-NG Community version 203.110. 
 
 It supports hot-plugin, definitely supports hot-plugout as well!
