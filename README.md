@@ -38,9 +38,9 @@ sudo chmod +x deploy.sh
 
 ```
 
-4. If no failed reported. Congratulations! Enjoy your lab!
+4. If no failed reported. Congratulations! Enjoy your lab!e
     
-    If any shit happen, you could follow this procedure blow to rollback your code.
+    If any shit happen, you could follow this procedure below to rollback your code.
 
     - Change your directory to the git folder with command `cd <Where the folder is>`, typically the folder name is `EVE-NG-RVO`.
     - Use the command `git log | head` to check the recent commit. find out the commit version which you want to revert.
