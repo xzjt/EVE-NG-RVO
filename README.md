@@ -42,9 +42,9 @@ sudo chmod +x deploy.sh
     
     If any shit happen, you could follow this procedure below to rollback your code.
 
-    - Change your directory to the git folder with command `cd <Where the folder is>`, typically the folder name is `EVE-NG-RVO`.
-    - Use the command `git log | head` to check the recent commit. find out the commit version which you want to revert.
-    - Use command `EXAMPLE: git reset --hard e66f2a7533225f4a40334ab57e7c24cbc0e39982`to revert specified version. 
-    - And then, execute `deploy.sh` again.
+- Change your directory to the git folder with command `cd <Where the folder is>`, typically the folder name is `EVE-NG-RVO`.
+- Use the command `git log | head` to check the recent commit. find out the commit version which you want to revert.
+- Use command `EXAMPLE: git reset --hard e66f2a7533225f4a40334ab57e7c24cbc0e39982`to revert specified version. 
+- And then, execute `deploy.sh` again.
 
 5. If you want to update your version to current release. Just use `git pull` in your git folder (depends you not yet delete the folder).
