@@ -38,7 +38,7 @@ sudo chmod +x deploy.sh
 
 ```
 
-4. If no failed reported. Congratulations! Enjoy your lab!e
+4. If no failed reported. congratulations! enjoy your lab!
     
     If any shit happen, you could follow this procedure below to rollback your code.
 
