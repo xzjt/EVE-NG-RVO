@@ -2,7 +2,8 @@
 This is redevelop of EVE-NG Community version 203.110. 
 
 It supports hot-plug, link style edit, link quality setup. 
-Not limited the number of user and the role `Admin`, `Editor`, `User`.
+
+Not limited the number of user and role `Admin`, `Editor`, `User`.
 
 Update 2020920
 
