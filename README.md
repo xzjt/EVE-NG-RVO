@@ -47,4 +47,4 @@ sudo chmod +x deploy.sh
     - Use command `EXAMPLE: git reset --hard e66f2a7533225f4a40334ab57e7c24cbc0e39982`to revert specified version. 
     - And then, execute `deploy.sh` again.
 
-5. If you want to update your version to current release. Just use `git pull` in your git folder (depends you ain't the the folder).
+5. If you want to update your version to current release. Just use `git pull` in your git folder (depends you not yet delete the folder).
