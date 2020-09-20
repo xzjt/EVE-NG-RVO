@@ -15,22 +15,22 @@ if [ $? -ne 0 ]; then
 fi
 
 if [ -d ./html ] && [ -d /opt/unetlab ]; then
-	cp -r ./html /opt/unetlab && rm -rf ./html
+	cp -r ./html /opt/unetlab
 	if [ $? -ne 0 ]; then
-		echo '[-] move folder "html" to "/opt/unetlab" failed'
+		echo '[-] Copy folder "html" to "/opt/unetlab" failed'
 		htmlcp='failed'
 	else
-		echo '[+] move folder html to "/opt/unetlab" successfully!'
+		echo '[+] Copy folder html to "/opt/unetlab" successfully!'
 	fi
 fi
 
 if [ -d ./scripts ] && [ -d /opt/unetlab ]; then
-	cp -r ./scripts /opt/unetlab && rm -rf ./scripts
+	cp -r ./scripts /opt/unetlab
 	if [ $? -ne 0 ]; then
-		echo '[-] move folder "scripts" to "/opt/unetlab" failed'
+		echo '[-] Copy folder "scripts" to "/opt/unetlab" failed'
 		scrptscp='failed'
 	else
-		echo '[+] move folder scripts to "/opt/unetlab" successfully!'
+		echo '[+] Copy folder scripts to "/opt/unetlab" successfully!'
 	fi
 fi
 
