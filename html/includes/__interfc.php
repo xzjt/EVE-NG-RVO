@@ -183,155 +183,90 @@ class Interfc {
 		if (isset($p['color'])) {
 			$this -> color = (string) $p['color'];
 			$modified = True;
-		} else {
-			$this -> color = "";
-			$modified = True;
+		}
 		}
 		if (isset($p['style'])) {
 			$this -> style = (string) $p['style'];
-			$modified = True;
-		} else {
-			$this -> style = "";
 			$modified = True;
 		}
 		if (isset($p['linkstyle'])) {
 			$this -> linkstyle = (string) $p['linkstyle'];
 			$modified = True;
-		} else {
-			$this -> linkstyle = "";
-			$modified = True;
 		}
 		if (isset($p['label'])) {
 			$this -> label = (string) $p['label'];
-			$modified = True;
-		} else {
-			$this -> label = "";
 			$modified = True;
 		}
 		if (isset($p['labelpos'])) {
 			$this -> labelpos = (string) $p['labelpos'];
 			$modified = True;
-		} else {
-			$this -> labelpos = "";
-			$modified = True;
 		}
 		if (isset($p['stub'])) {
 			$this -> stub = (string) $p['stub'];
-			$modified = True;
-		} else {
-			$this -> stub = "";
 			$modified = True;
 		}
 		if (isset($p['curviness'])) {
 			$this -> curviness = (string) $p['curviness'];
 			$modified = True;
-		} else {
-			$this -> curviness = "";
-			$modified = True;
 		}
 		if (isset($p['beziercurviness'])) {
 			$this -> beziercurviness = (string) $p['beziercurviness'];
-			$modified = True;
-		} else {
-			$this -> beziercurviness = "";
 			$modified = True;
 		}
 		if (isset($p['round'])) {
 			$this -> round = (string) $p['round'];
 			$modified = True;
-		} else {
-			$this -> round = "";
-			$modified = True;
 		}
 		if (isset($p['midpoint'])) {
 			$this -> midpoint = (string) $p['midpoint'];
-			$modified = True;
-		} else {
-			$this -> midpoint = "";
 			$modified = True;
 		}
 		if (isset($p['srcpos'])) {
 			$this -> srcpos = (string) $p['srcpos'];
 			$modified = True;
-		} else {
-			$this -> srcpos = 0.15;
-			$modified = True;
 		}
 		if (isset($p['dstpos'])) {
 			$this -> dstpos = (string) $p['dstpos'];
-			$modified = True;
-		} else {
-			$this -> dstpos = 0.85;
 			$modified = True;
 		}
 		if (isset($p['destination_bandwidth'])) {
 			$this -> destination_bandwidth = (int) $p['destination_bandwidth'];
 			$modified = True;
-		} else {
-			$this -> destination_bandwidth = 0;
-			$modified = True;
 		}
 		if (isset($p['destination_delay'])) {
 			$this -> destination_delay = (int) $p['destination_delay'];
-			$modified = True;
-		} else {
-			$this -> destination_delay = 0;
 			$modified = True;
 		}
 		if (isset($p['destination_jitter'])) {
 			$this -> destination_jitter = (int) $p['destination_jitter'];
 			$modified = True;
-		} else {
-			$this -> destination_jitter = 0;
-			$modified = True;
 		}
 		if (isset($p['destination_loss'])) {
 			$this -> destination_loss = (int) $p['destination_loss'];
-			$modified = True;
-		} else {
-			$this -> destination_loss = 0;
 			$modified = True;
 		}
 		if (isset($p['destination_suspend'])) {
 			$this -> destination_suspend = (int) $p['destination_suspend'];
 			$modified = True;
-		} else {
-			$this -> destination_suspend = 0;
-			$modified = True;
 		}
 		if (isset($p['source_bandwidth'])) {
 			$this -> source_bandwidth = (int) $p['source_bandwidth'];
-			$modified = True;
-		} else {
-			$this -> source_bandwidth = 0;
 			$modified = True;
 		}
 		if (isset($p['source_delay'])) {
 			$this -> source_delay = (int) $p['source_delay'];
 			$modified = True;
-		} else {
-			$this -> source_delay = 0;
-			$modified = True;
 		}
 		if (isset($p['source_jitter'])) {
 			$this -> source_jitter = (int) $p['source_jitter'];
-			$modified = True;
-		} else {
-			$this -> source_jitter = 0;
 			$modified = True;
 		}
 		if (isset($p['source_loss'])) {
 			$this -> source_loss = (int) $p['source_loss'];
 			$modified = True;
-		} else {
-			$this -> source_loss = 0;
-			$modified = True;
 		}
 		if (isset($p['source_suspend'])) {
 			$this -> source_suspend = (int) $p['source_suspend'];
-			$modified = True;
-		} else {
-			$this -> source_suspend = 0;
 			$modified = True;
 		}
 
