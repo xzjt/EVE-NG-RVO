@@ -317,7 +317,7 @@ class Interfc {
 			$this -> source_jitter = (int) $p['source_jitter'];
 			$modified = True;
 		} else if (!isset($this -> source_jitter)) {
-			$this -> source_jitter = (int) $p['source_jitter'];
+			$this -> source_jitter = 0;
 			$modified = True;
 		}
 		if (isset($p['source_loss'])) {
