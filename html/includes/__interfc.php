@@ -184,7 +184,6 @@ class Interfc {
 			$this -> color = (string) $p['color'];
 			$modified = True;
 		}
-		}
 		if (isset($p['style'])) {
 			$this -> style = (string) $p['style'];
 			$modified = True;
