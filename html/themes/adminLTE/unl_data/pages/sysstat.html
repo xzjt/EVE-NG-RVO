@@ -9,13 +9,12 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          System status
-          <small></small>
+          <strong>System status</strong>
         </h1>
         <ol class="breadcrumb">
 			<li><a href="#/main"><i class="fa fa-home"></i></a></li>
-			<li><i class="fa fa-book"></i> Logs</li>
-			<li class="active"><i class="fa fa-adjust"></i> System status</li>
+			<li><i class="fa fa-area-chart"></i> System </li>
+			<li class="active"><i class="fa fa-pie-chart"></i> System status </li>
         </ol>
       </section>
 
@@ -46,57 +45,33 @@
             <ui-knob value="valueDisk" options="optionsDisk"></ui-knob>
           </div><!-- ./col -->
         </div><!-- /.row -->
-		
-		
-		<div class="row">
-        <div class="col-lg-offset-3 col-lg-2 col-md-4 col-xs-12">
-          <!-- small box -->
-            <div style="background-color:#eee;">
-              <h3 class="text-center" style="margin-bottom:0px">running IOL nodes </h3>
-              <h1 class="text-center" data-ng-bind="serverstatus.iol" style="margin-top:10px"></h1>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-2 col-md-4 col-xs-12">
-          <!-- small box -->
-            <div style="background-color:#eee;">
-              <h3 class="text-center" style="margin-bottom:0px">running Dynamips nodes </h3>
-              <h1 class="text-center" data-ng-bind="serverstatus.dynamips" style="margin-top:10px"></h1>
-            </div>
-        </div>
-        <!-- ./col -->
-		<div class="col-lg-2 col-md-4 col-xs-12">
-          <!-- small box -->
-            <div style="background-color:#eee;">
-              <h3 class="text-center" style="margin-bottom:0px">running QEMU nodes </h3>
-              <h1 class="text-center" data-ng-bind="serverstatus.qemu" style="margin-top:10px"></h1>
-            </div>
-        </div>
-        <!-- ./col -->
-		</div>
-		<div class="row">
-		<div class="col-lg-offset-4 col-md-offset-1 col-lg-2 col-md-4 col-xs-12">
-          <!-- small box -->
-            <div style="background-color:#eee;">
-              <h3 class="text-center" style="margin-bottom:0px">running Docker nodes </h3>
-              <h1 class="text-center" data-ng-bind="serverstatus.docker" style="margin-top:10px"></h1>
-            </div>
-        </div>
-        <!-- ./col -->
-		<div class="col-lg-2 col-md-4 col-xs-12">
-          <!-- small box -->
-            <div style="background-color:#eee;">
-              <h3 class="text-center" style="margin-bottom:0px">running VPCS nodes </h3>
-              <h1 class="text-center" data-ng-bind="serverstatus.vpcs" style="margin-top:10px"></h1>
-            </div>
-        </div>
-        <!-- ./col -->
-      </div>
-		<p class="text-muted">Qemu version: <text data-ng-bind="serverstatus.qemu_version"></text></p>
-		<p class="text-muted" data-ng-bind="versiondata"></p>
-		<p class="text-muted" id="pUKSM">UKSM status: &nbsp;<input type="checkbox" id="ToggleUKSM" /></p>
-		<p class="text-muted" id="pKSM">KSM status: &nbsp;<input type="checkbox" id="ToggleKSM" /></p>
-		<p class="text-muted">CPULimit status: &nbsp;<input type="checkbox" id="ToggleCPULIMIT" /></p>
+
+        <div style="margin-top:3%">
+          <p class="text-muted"></p>Qemu version: <text data-ng-bind="serverstatus.qemu_version"></text></p>
+          <p class="text-muted" data-ng-bind="versiondata"></p>
+          <p class="text-muted" id="pUKSM">UKSM status: &nbsp;<input type="checkbox" id="ToggleUKSM" /></p>
+          <p class="text-muted" id="pKSM">KSM status: &nbsp;<input type="checkbox" id="ToggleKSM" /></p>
+          <p class="text-muted">CPULimit status: &nbsp;<input type="checkbox" id="ToggleCPULIMIT" /></p>
+        </dvi>
+
+        <table class="table table-hover table-striped" style="margin-bottom:3%">
+          <tbody>
+            <tr>
+              <th> Running IOL nodes </th>
+              <th> Running Dynamips nodes </th>
+              <th> Running QEMU nodes </th>
+              <th> Running Docker nodes </th>
+              <th> Running VPCS nodes </th>
+            </tr>
+            <tr class='center'>
+              <th data-ng-bind="serverstatus.iol"></h1>
+              <th data-ng-bind="serverstatus.dynamips"></h1>
+              <th data-ng-bind="serverstatus.qemu"><th1>
+              <th data-ng-bind="serverstatus.docker"></th>
+              <th data-ng-bind="serverstatus.vpcs"></th>
+            </tr>
+          </tbody>
+        </table>
       </div><!-- /.box-body -->
     </div><!-- /.box -->
   </div><!-- /.col -->
