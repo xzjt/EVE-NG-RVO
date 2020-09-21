@@ -125,47 +125,6 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
             }
         );
     }
-
-    // Fix Permissions
-    $scope.fixpermissions = function() {
-        html_loader = "<div id='progress-loader'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
-        $(".content-wrapper").append(html_loader);
-        $http({
-            method: 'GET',
-            url: '/actions.php?action=fix'
-        })
-        .then(
-            function successCallback(response) {
-                $("#progress-loader").remove();
-                toastr["success"]('Fix permission Successfully!', 'Success');
-            },
-            function errorCallback(response) {
-                $("#progress-loader").remove();
-                toastr["error"]('Fix permission Failed!', 'Error');
-            }
-        );
-    }
-    
-    // IOU License
-    $scope.IOUlicense = function() {
-        html_loader = "<div id='progress-loader'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
-        $(".content-wrapper").append(html_loader);
-        $http({
-            method: 'GET',
-            url: '/actions.php?action=iol'
-        })
-        .then(
-            function successCallback(response) {
-                $("#progress-loader").remove();
-                toastr["success"]('IOU License Generate Successfully!', 'Success');
-            },
-            function errorCallback(response) {
-                $("#progress-loader").remove();
-                toastr["error"]('IOU License Generate Failed!', 'Error');
-            }
-        );
-    }
-
 }
 // set cpulimit
 function setCpuLimit(bool) {
@@ -267,6 +226,46 @@ function setKsm(bool) {
         }
     });
     return deferred.promise();
+}
+
+// Fix Permissions
+$scope.fixpermissions = function() {
+    html_loader = "<div id='progress-loader'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
+    $(".content-wrapper").append(html_loader);
+    $http({
+        method: 'GET',
+        url: '/actions.php?action=fix'
+    })
+    .then(
+        function successCallback(response) {
+            $("#progress-loader").remove();
+            toastr["success"]('Fix permission Successfully!', 'Success');
+        },
+        function errorCallback(response) {
+            $("#progress-loader").remove();
+            toastr["error"]('Fix permission Failed!', 'Error');
+        }
+    );
+}
+
+// IOU License
+$scope.IOUlicense = function() {
+    html_loader = "<div id='progress-loader'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
+    $(".content-wrapper").append(html_loader);
+    $http({
+        method: 'GET',
+        url: '/actions.php?action=iol'
+    })
+    .then(
+        function successCallback(response) {
+            $("#progress-loader").remove();
+            toastr["success"]('IOU License Generate Successfully!', 'Success');
+        },
+        function errorCallback(response) {
+            $("#progress-loader").remove();
+            toastr["error"]('IOU License Generate Failed!', 'Error');
+        }
+    );
 }
 
 // CPULIMIT Toggle
