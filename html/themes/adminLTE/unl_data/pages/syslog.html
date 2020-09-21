@@ -56,11 +56,9 @@
         </div>
 		<hr>
 		<div class="col-xs-12" style="min-height:200px;">
-			<h4 class="text-center" style="margin-top:0px;" data-ng-show="!(logInfo.length == 0) && fileselect">File output start</h4>
 			<p data-ng-repeat="x in logInfo track by $index">{{x}}</p>
 			<h3 class="text-center" style="padding-top: 50px;" data-ng-show="!fileselect">Choose log file</h3>
 			<h3 class="text-center" style="padding-top:50px;" data-ng-show="logInfo.length == 0 && fileselect">Null</h3>
-			<h4 class="text-center" style="margin-top:0px;" data-ng-show="!(logInfo.length == 0) && fileselect">File output end</h4>
 		</div>
         
 	</div>
