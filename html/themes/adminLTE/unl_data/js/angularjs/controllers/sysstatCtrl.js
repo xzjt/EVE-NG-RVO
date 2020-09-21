@@ -112,22 +112,58 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
 	$interval(function () {
 			if ($location.path() == '/sysstat') $scope.systemstat()
     }, 2000);
-	        // Stop All Nodes //START
-        //$app -> delete('/api/status', function() use ($app, $db) {
-        $scope.stopAll = function() {
-                $http({
-                        method: 'DELETE',
-                        url: '/api/status'})
-                        .then(
-                                function successCallback(response) {
-                                        console.log(response)
-                                },
-                                function errorCallback(response) {
-                                        console.log(response)
-                                }
-                        );
-        }
-        // Stop All Nodes //STOP
+    // Stop All Nodes
+    //$app -> delete('/api/status', function() use ($app, $db) {
+    $scope.stopAll = function() {
+        $http({method: 'DELETE', url: '/api/status'}).then(
+            function successCallback(response) {
+                    console.log(response)
+            },
+            function errorCallback(response) {
+                    console.log(response)
+            }
+        );
+    }
+
+    // Fix Permissions
+    $scope.fixpermissions = function() {
+        html_loader = "<div id='progress-loader'style='z-index:99999'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
+        $(".content-wrapper").append(html_loader);
+        $http({
+            method: 'GET',
+            url: '/actions.php?action=fix'
+        })
+        .then(
+            function successCallback(response) {
+                $("#progress-loader").remove();
+                toastr["success"]('Fix permission Successfully!', 'Success');
+            },
+            function errorCallback(response) {
+                $("#progress-loader").remove();
+                toastr["error"]('Fix permission Failed!', 'Error');
+            }
+        );
+    }
+    
+    // IOU License
+    $scope.IOUlicense = function() {
+        html_loader = "<div id='progress-loader' style='z-index:99999'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
+        $(".content-wrapper").append(html_loader);
+        $http({
+            method: 'GET',
+            url: '/actions.php?action=iol'
+        })
+        .then(
+            function successCallback(response) {
+                $("#progress-loader").remove();
+                toastr["success"]('IOU License Generate Successfully!', 'Success');
+            },
+            function errorCallback(response) {
+                $("#progress-loader").remove();
+                toastr["error"]('IOU License Generate Failed!', 'Error');
+            }
+        );
+    }
 
 }
 // set cpulimit
