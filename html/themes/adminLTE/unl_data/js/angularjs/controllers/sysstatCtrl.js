@@ -1,7 +1,7 @@
 function sysstatController($scope, $http, $rootScope, $interval, $location) {
-        $("#ToggleUKSM").toggleSwitch({width: "50px"});
-        $("#ToggleKSM").toggleSwitch({width: "50px"});
-        $("#ToggleCPULIMIT").toggleSwitch({width: "50px"});
+    $("#ToggleUKSM").toggleSwitch({width: "50px"});
+    $("#ToggleKSM").toggleSwitch({width: "50px"});
+    $("#ToggleCPULIMIT").toggleSwitch({width: "50px"});
 	$scope.testAUTH("/sysstat"); //TEST AUTH
 	$scope.versiondata='';
 	$scope.serverstatus=[];
@@ -113,18 +113,6 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
 	$interval(function () {
 			if ($location.path() == '/sysstat') $scope.systemstat()
     }, 2000);
-    // Stop All Nodes
-    //$app -> delete('/api/status', function() use ($app, $db) {
-    $scope.stopAll = function() {
-        $http({method: 'DELETE', url: '/api/status'}).then(
-            function successCallback(response) {
-                    console.log(response)
-            },
-            function errorCallback(response) {
-                    console.log(response)
-            }
-        );
-    }
 }
 // set cpulimit
 function setCpuLimit(bool) {
@@ -226,6 +214,19 @@ function setKsm(bool) {
         }
     });
     return deferred.promise();
+}
+
+// Stop All Nodes
+//$app -> delete('/api/status', function() use ($app, $db) {
+$scope.stopAll = function() {
+    $http({method: 'DELETE', url: '/api/status'}).then(
+        function successCallback(response) {
+                console.log(response)
+        },
+        function errorCallback(response) {
+                console.log(response)
+        }
+    );
 }
 
 // Fix Permissions
