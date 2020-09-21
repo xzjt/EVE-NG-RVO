@@ -86,7 +86,7 @@ function usermgmtController($scope, $http, $rootScope, $uibModal, $log) {
 
 	// Fix Permissions
 	$scope.fixpermissions = function() {
-		html_loader = "<div id='progress-loader'style='z-index:99999'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
+		html_loader = "<div id='progress-loader'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
 		$(".content-wrapper").append(html_loader);
 		$http({
 			method: 'GET',
@@ -106,7 +106,7 @@ function usermgmtController($scope, $http, $rootScope, $uibModal, $log) {
 	
 	// IOU License
 	$scope.IOUlicense = function() {
-		html_loader = "<div id='progress-loader' style='z-index:99999'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
+		html_loader = "<div id='progress-loader'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
 		$(".content-wrapper").append(html_loader);
 		$http({
 			method: 'GET',

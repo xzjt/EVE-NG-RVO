@@ -76,36 +76,37 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
 	$('body').removeClass().addClass('hold-transition skin-blue layout-top-nav');
 	$scope.systemstat = function(){
 		$http.get('/api/status').then(
-				function successCallback(response) {
-					//console.log(response.data.data)
-					$scope.serverstatus=response.data.data;
-					$scope.valueCPU = $scope.serverstatus.cpu;
-					$scope.valueMem = $scope.serverstatus.mem;
-					$scope.valueSwap = $scope.serverstatus.swap;
-					$scope.valueDisk = $scope.serverstatus.disk;
-					$scope.versiondata="Current API version: "+response.data.data.version;
-                                        window.uksm = false;
-                                        window.ksm = false;
-                                        window.cpulimit = false;
-                                        if ( response.data.data.uksm == "unsupported" )  $("#pUKSM").addClass('hidden')
-                                        if ( response.data.data.ksm == "unsupported" )  $("#pKSM").addClass('hidden')
-                                        if ( response.data.data.uksm == "enabled" ) {
-                                                window.uksm = true;
-						$("#ToggleUKSM").toggleCheckedState(true)
-                                        }
-                                        if ( response.data.data.ksm == "enabled" ) {
-                                                window.ksm = true;
-                                                $("#ToggleKSM").toggleCheckedState(true)
-                                        }
-                                        if ( response.data.data.cpulimit == "enabled" ) {
-                                                window.cpulimit = true;
-                                                $("#ToggleCPULIMIT").toggleCheckedState(true)
-                                        }
-					$.unblockUI();
-				}, 
-				function errorCallback(response) {
-					$.unblockUI();
-					console.log("Unknown Error. Why did API doesn't respond?"); $location.path("/login");}	
+            function successCallback(response) {
+                //console.log(response.data.data)
+                $scope.serverstatus=response.data.data;
+                $scope.valueCPU = $scope.serverstatus.cpu;
+                $scope.valueMem = $scope.serverstatus.mem;
+                $scope.valueSwap = $scope.serverstatus.swap;
+                $scope.valueDisk = $scope.serverstatus.disk;
+                $scope.versiondata="Current API version: "+response.data.data.version;
+                window.uksm = false;
+                window.ksm = false;
+                window.cpulimit = false;
+                if ( response.data.data.uksm == "unsupported" )  $("#pUKSM").addClass('hidden')
+                if ( response.data.data.ksm == "unsupported" )  $("#pKSM").addClass('hidden')
+                if ( response.data.data.uksm == "enabled" ) {
+                    window.uksm = true;
+                    $("#ToggleUKSM").toggleCheckedState(true)
+                }
+                if ( response.data.data.ksm == "enabled" ) {
+                        window.ksm = true;
+                        $("#ToggleKSM").toggleCheckedState(true)
+                }
+                if ( response.data.data.cpulimit == "enabled" ) {
+                        window.cpulimit = true;
+                        $("#ToggleCPULIMIT").toggleCheckedState(true)
+                }
+                $.unblockUI();
+            }, 
+            function errorCallback(response) {
+                $.unblockUI();
+                console.log("Unknown Error. Why did API doesn't respond?"); $location.path("/login");
+            }	
 		);
 	}
 	$scope.systemstat()
@@ -127,7 +128,7 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
 
     // Fix Permissions
     $scope.fixpermissions = function() {
-        html_loader = "<div id='progress-loader'style='z-index:99999'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
+        html_loader = "<div id='progress-loader'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
         $(".content-wrapper").append(html_loader);
         $http({
             method: 'GET',
@@ -147,7 +148,7 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
     
     // IOU License
     $scope.IOUlicense = function() {
-        html_loader = "<div id='progress-loader' style='z-index:99999'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
+        html_loader = "<div id='progress-loader'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
         $(".content-wrapper").append(html_loader);
         $http({
             method: 'GET',
