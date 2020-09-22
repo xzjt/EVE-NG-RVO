@@ -216,18 +216,6 @@ function setKsm(bool) {
     return deferred.promise();
 }
 
-// Stop All Nodes
-$scope.stopAll = function() {
-    $http({method: 'DELETE', url: '/api/status'}).then(
-        function successCallback(response) {
-                console.log(response)
-        },
-        function errorCallback(response) {
-                console.log(response)
-        }
-    );
-}
-
 // CPULIMIT Toggle
 
 $(document).on('change','#ToggleCPULIMIT', function (e) {

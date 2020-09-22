@@ -181,32 +181,32 @@ function mainController($scope, $http, $location, $window, $uibModal, $log, $roo
     //Clone Lab//START
 
     $scope.cloneElement = function(elementName, event) {
-		Date.prototype.format = function(fmt) { 
-			var o = { 
-			"M+" : this.getMonth()+1,                 //月份 
-			"d+" : this.getDate(),                    //日 
-			"h+" : this.getHours(),                   //小时 
-			"m+" : this.getMinutes(),                 //分 
-			"s+" : this.getSeconds(),                 //秒 
-			"q+" : Math.floor((this.getMonth()+3)/3), //季度 
-			"S"  : this.getMilliseconds()             //毫秒 
-		}; 
-		if(/(y+)/.test(fmt)) {
-				fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
-		}
-			for(var k in o) {
-			if(new RegExp("("+ k +")").test(fmt)){
-					fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-				}
-			}
-		return fmt; 
-		} 
-		d = (new Date()).getTime();
-		dfmt = new Date(d).format("yyyyMMdd_hhmm")
+        Date.prototype.format = function(fmt) {
+            var o = {
+                "M+": this.getMonth() + 1, //月份 
+                "d+": this.getDate(), //日 
+                "h+": this.getHours(), //小时 
+                "m+": this.getMinutes(), //分 
+                "s+": this.getSeconds(), //秒 
+                "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+                "S": this.getMilliseconds() //毫秒 
+            };
+            if (/(y+)/.test(fmt)) {
+                fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            }
+            for (var k in o) {
+                if (new RegExp("(" + k + ")").test(fmt)) {
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+        d = (new Date()).getTime();
+        dfmt = new Date(d).format("yyyyMMdd_hhmm")
         console.log('clone requested for ' + $scope.path + '/' + elementName.value + '_' + dfmt);
         form_data = {};
-		// form_data['name'] = elementName.value.slice(0, -4) + '_' + d.getTime();
-		form_data['name'] = elementName.value + '_' + 'clone_at_' + dfmt;
+        // form_data['name'] = elementName.value.slice(0, -4) + '_' + d.getTime();
+        form_data['name'] = elementName.value + '_' + 'clone_at_' + dfmt;
         form_data['source'] = $scope.path + '/' + elementName.value;
         $http({
                 method: 'POST',

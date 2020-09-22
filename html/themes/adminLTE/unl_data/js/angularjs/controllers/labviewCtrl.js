@@ -1,3 +1,3 @@
-function labViewCtrl ($scope, $http, $location) {
-	
+function labViewCtrl($scope, $http, $location) {
+
 };
