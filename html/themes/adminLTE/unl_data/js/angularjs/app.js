@@ -128,8 +128,8 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                         };
                     }
                     if ($rootScope.role !== 'admin' || $rootScope.role !== 'editor') {
-                        $(document.getElementById('tools').hide());
-                        $(document.getElementById('Manage').hide());
+                        $(document.getElementById('tools')).hide();
+                        $(document.getElementById('Manage')).hide();
                     }
                     console.log($rootScope.role);
                     console.log(document.getElementById('System'));
