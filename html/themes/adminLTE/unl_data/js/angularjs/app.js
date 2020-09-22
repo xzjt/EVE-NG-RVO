@@ -187,7 +187,7 @@ app_main_unl.controller('HeaderController', ['$scope', '$http', '$location', '$r
 
     // Fix Permissions
     $scope.fixpermissions = function() {
-        html_loader = "<div id='progress-loader'style='z-index:99999'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
+        html_loader = "<div id='progress-loader'><label style='float:left'>Fix Permissions...</label><div class='loader'></div></div>";
         $(".content-wrapper").append(html_loader);
         $http({
                 method: 'GET',
@@ -207,7 +207,7 @@ app_main_unl.controller('HeaderController', ['$scope', '$http', '$location', '$r
 
     // IOU License
     $scope.IOUlicense = function() {
-        html_loader = "<div id='progress-loader' style='z-index:99999'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
+        html_loader = "<div id='progress-loader'><label style='float:left'>Generateing License...</label><div class='loader'></div></div>";
         $(".content-wrapper").append(html_loader);
         $http({
             method: 'GET',
