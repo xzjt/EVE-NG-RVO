@@ -127,7 +127,11 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                             $location.path('/lab')
                         };
                     }
+                    // if ($rootScope.role !== 'admin' || $rootScope.role !== 'editor') {
+
+                    // }
                     console.log($rootScope.role);
+                    console.log(document.getElementsByClassName('dropdown'))
                 }
             },
             function errorCallback(response) {
