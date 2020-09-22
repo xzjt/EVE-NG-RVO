@@ -1950,7 +1950,7 @@ pre code {
     width: 75%;
   }
   .col-md-8 {
-    width: 58.66666667%;
+    width: 59.66666667% !important;
   }
   .col-md-7 {
     width: 58.33333333%;
@@ -1962,7 +1962,7 @@ pre code {
     width: 41.66666667%;
   }
   .col-md-4 {
-    width: 40.33333333%;
+    width: 40.33333333% !important;
   }
   .col-md-3 {
     width: 25%;
@@ -1986,7 +1986,7 @@ pre code {
     right: 75%;
   }
   .col-md-pull-8 {
-    right: 58.66666667%;
+    right: 66.66666667%;
   }
   .col-md-pull-7 {
     right: 58.33333333%;
@@ -1998,7 +1998,7 @@ pre code {
     right: 41.66666667%;
   }
   .col-md-pull-4 {
-    right: 40.33333333%;
+    right: 33.33333333%;
   }
   .col-md-pull-3 {
     right: 25%;
