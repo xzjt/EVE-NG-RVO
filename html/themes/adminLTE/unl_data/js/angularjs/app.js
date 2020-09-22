@@ -129,16 +129,10 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                     }
 
                     if ($rootScope.role == 'admin' || $rootScope.role == 'editor') {
-                        console.log('I am a test!');
-                        console.log($('#Manage'));
-                        console.log($('#tools'));
-                        
                         setTimeout(() => {
                             document.getElementById('Manage').style.removeProperty('display');
                             document.getElementById('tools').style.removeProperty('display');
-                            // $('#Manage').remove();
-                            // $('#tools').remove();
-                        }, 20);
+                        }, 10);
                     }
                 }
             },
