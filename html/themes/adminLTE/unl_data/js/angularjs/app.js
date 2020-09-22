@@ -127,6 +127,7 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                             $location.path('/lab')
                         };
                     }
+                    console.log($rootScope.role);
                 }
             },
             function errorCallback(response) {
