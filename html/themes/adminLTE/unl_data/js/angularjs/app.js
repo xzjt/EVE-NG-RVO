@@ -130,8 +130,8 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
 
                     if ($rootScope.role == 'admin' || $rootScope.role == 'editor') {
                         setTimeout(() => {
-                            document.getElementById('Manage').style.removeProperty('display');
-                            document.getElementById('tools').style.removeProperty('display');
+                            document.getElementById('Manage').removeAttribute('style');
+                            document.getElementById('tools').removeAttribute('style');
                         }, 20);
                     }
                 }
