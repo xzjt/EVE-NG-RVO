@@ -136,7 +136,7 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                         setTimeout(() => {
                             $('#Manage').remove();
                             $('#tools').remove();
-                        }, 10);
+                        }, 20);
                     }
                 }
             },
@@ -202,19 +202,18 @@ app_main_unl.controller('HeaderController', ['$scope', '$http', '$location', '$r
         "Fix Permissions...</label><div class='loader'></div></div>";
         $(".content-wrapper").append(html_loader);
         $http({
-                method: 'GET',
-                url: '/actions.php?action=fix'
-            })
-            .then(
-                function successCallback(response) {
-                    $("#progress-loader").remove();
-                    toastr["success"]('Fix permission Successfully!', 'Success');
-                },
-                function errorCallback(response) {
-                    $("#progress-loader").remove();
-                    toastr["error"]('Fix permission Failed!', 'Error');
-                }
-            );
+            method: 'GET',
+            url: '/actions.php?action=fix'
+        }).then(
+            function successCallback(response) {
+                $("#progress-loader").remove();
+                toastr["success"]('Fix permission Successfully!', 'Success');
+            },
+            function errorCallback(response) {
+                $("#progress-loader").remove();
+                toastr["error"]('Fix permission Failed!', 'Error');
+            }
+        );
     }
 
     // IOU License
