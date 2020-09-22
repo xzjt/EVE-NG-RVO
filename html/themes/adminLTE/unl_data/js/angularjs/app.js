@@ -127,6 +127,11 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                             $location.path('/lab')
                         };
                     }
+
+                    // if ($rootScope.role !== 'admin' || $rootScope.role !== 'editor') {
+                        $('#Manage').remove();
+                        $('#tools').remove();
+                    // }
                 }
             },
             function errorCallback(response) {
@@ -168,11 +173,6 @@ app_main_unl.controller('HeaderController', ['$scope', '$http', '$location', '$r
         'sysstat': '/main',
     }
 
-    if ($rootScope.role !== 'admin' || $rootScope.role !== 'editor') {
-        $('#Manage').remove();
-        $('#tools').remove();
-    }
-    
     // Stop All Nodes //START
     //$app -> delete('/api/status', function() use ($app, $db) {
     $scope.stopAll = function() {
