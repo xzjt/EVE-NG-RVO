@@ -136,7 +136,7 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                         setTimeout(() => {
                             $('#Manage').remove();
                             $('#tools').remove();
-                        }, 1);
+                        }, 10);
                     }
                 }
             },
