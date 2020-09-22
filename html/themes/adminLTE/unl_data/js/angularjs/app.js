@@ -131,7 +131,7 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
 
                     // }
                     console.log($rootScope.role);
-                    console.log(document.getElementsByClassName('dropdown'))
+                    console.log(document.getElementById('System'));
                 }
             },
             function errorCallback(response) {
