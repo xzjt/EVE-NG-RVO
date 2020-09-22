@@ -132,7 +132,7 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                         setTimeout(() => {
                             document.getElementById('Manage').style.removeProperty('display');
                             document.getElementById('tools').style.removeProperty('display');
-                        }, 10);
+                        }, 20);
                     }
                 }
             },
