@@ -128,7 +128,8 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                         };
                     }
 
-                    if ($rootScope.role != 'admin' || $rootScope.role != 'editor') {
+                    if ($rootScope.role != 'admin' && $rootScope.role != 'editor') {
+                        console.log('I am a test!')
                         $('#Manage').remove();
                         $('#tools').remove();
                     }
