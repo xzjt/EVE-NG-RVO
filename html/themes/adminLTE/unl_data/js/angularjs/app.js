@@ -132,8 +132,11 @@ app_main_unl.controller('unlMainController', ['$scope', '$rootScope', '$http', '
                         console.log('I am a test!');
                         console.log($('#Manage'));
                         console.log($('#tools'));
-                        $('#Manage').remove();
-                        $('#tools').remove();
+                        
+                        setTimeout(() => {
+                            $('#Manage').remove();
+                            $('#tools').remove();
+                        }, 1);
                     }
                 }
             },
