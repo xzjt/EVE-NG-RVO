@@ -94,12 +94,12 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
                     $("#ToggleUKSM").toggleCheckedState(true)
                 }
                 if ( response.data.data.ksm == "enabled" ) {
-                        window.ksm = true;
-                        $("#ToggleKSM").toggleCheckedState(true)
+                    window.ksm = true;
+                    $("#ToggleKSM").toggleCheckedState(true)
                 }
                 if ( response.data.data.cpulimit == "enabled" ) {
-                        window.cpulimit = true;
-                        $("#ToggleCPULIMIT").toggleCheckedState(true)
+                    window.cpulimit = true;
+                    $("#ToggleCPULIMIT").toggleCheckedState(true)
                 }
                 $.unblockUI();
             }, 

@@ -4007,6 +4007,7 @@ function printListNodes(nodes) {
             if (value.className != 'close') {
                 value.parentElement.className += ' node-list-icon';
                 value.className += ' node-list-icon';
+                value.style.zIndex = 99999;
             }
         });
     })
