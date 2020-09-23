@@ -83,7 +83,7 @@ function sysstatController($scope, $http, $rootScope, $interval, $location) {
                 $scope.valueMem = $scope.serverstatus.mem;
                 $scope.valueSwap = $scope.serverstatus.swap;
                 $scope.valueDisk = $scope.serverstatus.disk;
-                $scope.versiondata="Current API version: "+response.data.data.version;
+                $scope.versiondata=response.data.data.version;
                 window.uksm = false;
                 window.ksm = false;
                 window.cpulimit = false;

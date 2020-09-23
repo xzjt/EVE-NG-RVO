@@ -1917,7 +1917,7 @@ function sysStatModalCtrl($scope, $uibModalInstance, $http, $interval, $rootScop
                 $scope.valueMem = $scope.serverstatus.mem;
                 $scope.valueSwap = $scope.serverstatus.swap;
                 $scope.valueDisk = $scope.serverstatus.disk;
-                $scope.versiondata = "Current API version: " + response.data.data.version;
+                $scope.versiondata = response.data.data.version;
             },
             function errorCallback(response) {
                 console.log("Unknown Error. Why did API doesn't respond?");
