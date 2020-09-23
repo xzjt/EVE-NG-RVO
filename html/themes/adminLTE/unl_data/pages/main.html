@@ -15,10 +15,10 @@
         <!-- Main content -->
         <section class="content row" style="padding-top: 0;">
             <div class="box-header with-border">
-                <h3 class="box-title" style="padding-right:10px;"><b><i class="fa fa-sitemap" aria-hidden="true"></i> File manager</b>
+                <h3 class="box-title" style="padding-right:10px;"><b><i class="fa fa-sitemap" aria-hidden="true"></i>File manager</b>
                 </h3>
                 <ol class="breadcrumb" style="margin-bottom:0px; display: inline-block; padding-left:10px; padding-right:10px;">
-                    <li>Current position</li>
+                    <li>Position</li>
                     <li data-ng-repeat="foldername in splitPath track by $index"><a class="pointer" data-ng-click="fileMngDraw(splitPathArray[$index])">{{foldername}}</a></li>
                 </ol>
             </div>
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4" style="width: 37.333333% !important;">
+                            <div class="col-md-4" style="width: 37.333333% !important;max-width: 500px !important;">
                                 <div class="mailbox-controls">
                                     <div class="mailbox-controls">
                                         <!--  data-ng-show="newElementToggle" -->
@@ -215,7 +215,7 @@
                             </div>
                             <!--FILE MANAGER END-->
                             <!--LAB INFO START-->
-                            <div class="col-md-8" style="width: 60.666667% !important;">
+                            <div class="col-md-8" style="width: 60.666667% !important;max-width: 500px !important;">
                                 <div class="form-group center-block" data-ng-show="!fileSelected" style="height:362px;">
                                     <h4 class="text-center" style="padding-top: 90px;">Choose a lab for more info</h4>
                                     <!--<input type="email" class="form-control" id="email">-->
