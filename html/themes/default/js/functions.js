@@ -4210,7 +4210,7 @@ function printPageLabOpen(lab) {
         if (Object.keys(pic) < 1) {
             $('.action-picturesget-li').addClass('hidden');
         }
-        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr></div>');
+        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr sytle="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:9px"></div>');
         $('#lab-sidebar ul').append('<li class="action-status-bar"><a class="action-status" href="javascript:void(0)" title="' + MESSAGES[13] + '"><i class="glyphicon glyphicon-info-sign"></i></a></li>');
         $('#lab-sidebar ul').append('<li><a class="action-download_box" href="javascript:void(0)" title="' + MESSAGES[266] + '"><i class="fa fa-download"></i></a></li>');
         // $('#lab-sidebar ul').append('<li><a class="action-freeselect" href="javascript:void(0)" title="' + MESSAGES[151] + '"><i class="glyphicon glyphicon-check"></i></a></li>');
