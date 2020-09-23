@@ -4203,7 +4203,7 @@ function printPageLabOpen(lab) {
         if (ROLE == 'admin' || ROLE == 'editor') {
             $('#lab-sidebar ul').append('<li><a class="action-labedit" href="javascript:void(0)" title="' + MESSAGES[87] + '"><i class="glyphicon glyphicon-pencil"></i></a></li>');
         }
-        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:9px"></div>');
+        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
         $('#lab-sidebar ul').append('<li class="action-nodes-li"><a class="action-nodes-li" href="javascript:void(0)" title="' + MESSAGES[62] + '"><i class="glyphicon glyphicon-hdd"></i></a></li>');
         $('#lab-sidebar ul').append('<li><a class="action-networksget" href="javascript:void(0)" title="' + MESSAGES[61] + '"><i class="glyphicon glyphicon-transfer"></i></a></li>');
         $('#lab-sidebar ul').append('<li><a class="action-textobjectsget" href="javascript:void(0)" title="' + MESSAGES[150] + '"><i class="glyphicon glyphicon-text-background"></i></a></li>');
@@ -4212,7 +4212,7 @@ function printPageLabOpen(lab) {
             $('.action-picturesget-li').addClass('hidden');
         }
         $('#lab-sidebar ul').append('<li class="action-status-bar"><a class="action-status" href="javascript:void(0)" title="' + MESSAGES[13] + '"><i class="glyphicon glyphicon-info-sign"></i></a></li>');
-        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:9px"></div>');
+        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
         $('#lab-sidebar ul').append('<li><a class="action-download_box" href="javascript:void(0)" title="' + MESSAGES[266] + '"><i class="fa fa-download"></i></a></li>');
         // $('#lab-sidebar ul').append('<li><a class="action-freeselect" href="javascript:void(0)" title="' + MESSAGES[151] + '"><i class="glyphicon glyphicon-check"></i></a></li>');
         if ($.cookie("topo") == 'dark') {
@@ -4220,7 +4220,7 @@ function printPageLabOpen(lab) {
         } else {
             $('#lab-sidebar ul').append('<li><a class="action-nightmode" href="javascript:void(0)" title="' + MESSAGES[235] + '"><i class="fas fa-moon"></i></a></li>');
         }
-        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:9px"></div>');
+        $('#lab-sidebar ul').append('<div style="padding:0px 7px"><hr style="margin-top: 12px;margin-bottom: 13px;border:0;border-top:2px solid #eee;margin-left:2px;margin-right:-7px"></div>');
         if ((ROLE == 'admin'|| ROLE == 'editor')) {
                 $('#lab-sidebar ul').append('<li><a class="action-lock-lab" href="javascript:void(0)" title="' + MESSAGES[166] + '"><i class="glyphicon glyphicon-ok-circle"></i></a></li>');
         }
