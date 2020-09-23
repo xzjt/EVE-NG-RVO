@@ -30,7 +30,7 @@
         <i class="fa fa-bar-chart-o"></i>
         <h3 class="box-title">System status</h3>
       </div><!-- /.box-header -->
-      <div class="box-body">
+      <div class="box-body" style="padding: 0% 10% !important;position: relative !important;left: 8% !important;">
         <div class="row">
           <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <ui-knob value="valueCPU" options="optionsCPU"></ui-knob>
@@ -47,7 +47,7 @@
         </div><!-- /.row -->
       </div>
 
-      <div style="position: relative;top:-200px;left: 40px;width: 16%;">
+      <div style="position: relative;top:-138px;left: 40px;width: 16%;">
         <table>
           <tbody>
             <tr class="text-muted">
@@ -55,21 +55,25 @@
               <th style="padding:0% 6%;">:</th>
               <th><text data-ng-bind="serverstatus.qemu_version"></text></th>
             </tr>
+            <tr></tr>
             <tr class="text-muted">
               <th>API Version</th>
               <th style="padding:0% 6%;">:</th>
               <th><text data-ng-bind="versiondata"></text></th>
             </tr>
+            <tr></tr>
             <tr class="text-muted" id="pUKSM">
               <th>UKSM status </th>
               <th style="padding:0% 6%;">:</th>
               <th><input type="checkbox" id="ToggleUKSM" /></th> 
             </tr>
+            <tr></tr>
             <tr class="text-muted" id="pKSM">
               <th>KSM status</th>
               <th style="padding:0% 6%;">:</th>
               <th><input type="checkbox" id="ToggleKSM" /></th>
             </tr>
+            <tr></tr>
             <tr class="text-muted">
               <th>CPULimit status</th>
               <th style="padding:0% 6%;">:</th>
@@ -79,7 +83,7 @@
         </table>
       </div>
       
-      <div>
+      <div style="padding: 0% 6%; position: relative; top: -36px;">
         <table class="table table-hover table-striped" style="margin-bottom:3%">
           <tbody>
             <tr>

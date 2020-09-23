@@ -2020,9 +2020,7 @@ a:focus {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
-  padding: 0px 10%;
-  position: relative;
-  left: 8%;
+	padding: 10px
 }
 
 .no-header .box-body {
