@@ -427,7 +427,7 @@ body.login {
 }
 
 [class*="node"], [class*="network"] {
-    z-index: 1000;
+    z-index: 1060;
 }
 
 .grayscale {
