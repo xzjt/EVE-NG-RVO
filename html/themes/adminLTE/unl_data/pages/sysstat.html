@@ -45,23 +45,49 @@
             <ui-knob value="valueDisk" options="optionsDisk"></ui-knob>
           </div><!-- ./col -->
         </div><!-- /.row -->
+      </div>
 
-        <div style="margin-top:3%">
-          <p class="text-muted"></p>Qemu version: <text data-ng-bind="serverstatus.qemu_version"></text></p>
-          <p class="text-muted" data-ng-bind="versiondata"></p>
-          <p class="text-muted" id="pUKSM">UKSM status: &nbsp;<input type="checkbox" id="ToggleUKSM" /></p>
-          <p class="text-muted" id="pKSM">KSM status: &nbsp;<input type="checkbox" id="ToggleKSM" /></p>
-          <p class="text-muted">CPULimit status: &nbsp;<input type="checkbox" id="ToggleCPULIMIT" /></p>
-        </dvi>
-
+      <div style="margin-top:3%">
+        <table>
+          <tbody>
+            <tr class="text-muted">
+              <th>Qemu version</th>
+              <th class="text-muted">:</th>
+              <th class="text-muted"><text data-ng-bind="serverstatus.qemu_version"></text></th>
+            </tr>
+            <tr class="text-muted">
+              <th>API Version</th>
+              <th>:</th>
+              <th><text data-ng-bind="versiondata"></text></th>
+            </tr>
+            <tr class="text-muted" id="pUKSM">
+              <th>UKSM status</th>
+              <th>:</th>
+              <th><input type="checkbox" id="ToggleUKSM" /></th> 
+            </tr>
+            <tr class="text-muted" id="pKSM">
+              <th>KSM status</th>
+              <th>:</th>
+              <th><input type="checkbox" id="ToggleKSM" /></th>
+            </tr>
+            <tr class="text-muted">
+              <th>CPULimit status</th>
+              <th>:</th>
+              <th><input type="checkbox" id="ToggleCPULIMIT" /></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div>
         <table class="table table-hover table-striped" style="margin-bottom:3%">
           <tbody>
             <tr>
-              <th> Running IOL nodes </th>
-              <th> Running Dynamips nodes </th>
-              <th> Running QEMU nodes </th>
-              <th> Running Docker nodes </th>
-              <th> Running VPCS nodes </th>
+              <th> IOL nodes </th>
+              <th> Dynamips nodes </th>
+              <th> QEMU nodes </th>
+              <th> Docker nodes </th>
+              <th> VPCS nodes </th>
             </tr>
             <tr class='center'>
               <th data-ng-bind="serverstatus.iol"></h1>
