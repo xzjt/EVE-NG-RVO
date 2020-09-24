@@ -3962,7 +3962,12 @@ function createNodeListRow(template, id) {
 // Display all nodes in a table
 function printListNodes(nodes) {
     logger(1, 'DEBUG: printing node list');
-    var body = '<div class="table-responsive"><form id="form-node-edit-table" ><table class="configured-nodes table"><thead><tr><th>' + MESSAGES[92] + '</th><th>' + MESSAGES[19] + '</th><th>' + MESSAGES[111] + '</th><th>' + MESSAGES[163] + '</th><th>' + MESSAGES[105] + '</th><th>' + MESSAGES[203] + '</th><th>' + MESSAGES[106] + '</th><th>' + MESSAGES[107] + '</th><th>' + MESSAGES[108] + '</th><th>' + MESSAGES[109] + '</th><th>' + MESSAGES[110] + '</th><th>' + MESSAGES[112] + '</th><th>' + MESSAGES[164] + '</th><th>' + MESSAGES[123] + '</th><th>' + MESSAGES[99] + '</th></tr></thead><tbody>';
+    var body = '<div class="table-responsive"><form id="form-node-edit-table" ><table class="configured-nodes table"' + 
+    '><thead><tr><th>' + MESSAGES[92] + '</th><th>' + MESSAGES[19] + 
+    '</th><th>' + MESSAGES[111] + '</th><th>' + MESSAGES[163] + '</th><th>' + MESSAGES[105] + '</th><th>' + MESSAGES[203] + 
+    '</th><th>' + MESSAGES[106] + '</th><th>' + MESSAGES[107] + '</th><th>' + MESSAGES[108] + '</th><th>' + MESSAGES[109] + 
+    '</th><th>' + MESSAGES[110] + '</th><th>' + MESSAGES[112] + '</th><th>' + MESSAGES[164] + '</th><th>' + MESSAGES[123] + 
+    '</th><th>' + MESSAGES[99] + '</th></tr></thead><tbody>';
     var html_rows = [];
     var promises = [];
 
@@ -5486,13 +5491,13 @@ function unlockLab() {
     } else {
         $('.action-labobjectadd-li').show();
     }
-    if ($('.action-configsget-li').length == 0) {
-        configsget = '<li class="action-configsget-li"><a class="action-configsget" href="javascript:void(0)" title="' + 
-                      MESSAGES[58] + '"><i class="glyphicon glyphicon-align-left"></i>' + MESSAGES[58] + '</a></li>';
-        $('.action-status-bar').after(configsget);
-    } else {
-        $('.action-configsget-li').show();
-    }
+    // if ($('.action-configsget-li').length == 0) {
+    //     configsget = '<li class="action-configsget-li"><a class="action-configsget" href="javascript:void(0)" title="' + 
+    //                   MESSAGES[58] + '"><i class="glyphicon glyphicon-align-left"></i>' + MESSAGES[58] + '</a></li>';
+    //     $('.action-status-bar').after(configsget);
+    // } else {
+    //     $('.action-configsget-li').show();
+    // }
 
     return deferred.promise();
 }
