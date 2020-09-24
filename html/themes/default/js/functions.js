@@ -4009,7 +4009,7 @@ function printListNodes(nodes) {
 
         $.each(document.getElementsByTagName('button'),
         function(key, value) {
-            if (value.className != 'close') {
+            if (value.className == 'btn dropdown-toggle btn-default') {
                 value.parentElement.className += ' node-list-icon';
                 value.className += ' node-list-icon';
             }
