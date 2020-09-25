@@ -3505,19 +3505,19 @@ function printLabTopology() {
 				                dashstyle: dash
                             },
                             overlays: [src_label, dst_label],
-                            endpoints: [["Dot", {
-                                radius: 5,
-                                cssClass: "endpoint_" + source + "_" + source_interfaceId + " dest_" + destination + " " + x + " networkId_" + link['network_id']
-                            }], ["Dot", {
-                                radius: 5,
-                                cssClass: "endpoint_" + destination + "_" + destination_interfaceId + " dest_" + source + " " + y + " networkId_" + link['network_id']
-                            }]],
-                            endpointStyles: [{
-                                fill: "#93191c"
-                            },
-                            {
-                                fill: "#93191c"
-                            }]
+                            // endpoints: [["Dot", {
+                            //     radius: 5,
+                            //     cssClass: "endpoint_" + source + "_" + source_interfaceId + " dest_" + destination + " " + x + " networkId_" + link['network_id']
+                            // }], ["Dot", {
+                            //     radius: 5,
+                            //     cssClass: "endpoint_" + destination + "_" + destination_interfaceId + " dest_" + source + " " + y + " networkId_" + link['network_id']
+                            // }]],
+                            // endpointStyles: [{
+                            //     fill: "#93191c"
+                            // },
+                            // {
+                            //     fill: "#93191c"
+                            // }]
                         });
                         tmp_conn['source'] = source;
                         tmp_conn['source_label'] = source_label;
@@ -3600,19 +3600,19 @@ function printLabTopology() {
                                 dashstyle: dash
                             },
                             overlays: [src_label, dst_label],
-                            endpoints: [["Dot", {
-                                radius: 5,
-                                cssClass: "endpoint_" + source + "_" + source_interfaceId + " dest_" + destination + " " + x + " networkId_" + link['network_id'] + " serial serial_" + source + "_" + source_interfaceId + "_" + destination + "_" + destination_interfacesId
-                            }], ["Dot", {
-                                radius: 5,
-                                cssClass: "endpoint_" + destination + "_" + destination_interfaceId + " dest_" + source + " " + y + " networkId_" + link['network_id'] + " serial serial_" + source + "_" + source_interfaceId + "_" + destination + "_" + destination_interfacesId
-                            }]],
-                            endpointStyles: [{
-                                fill: "#93191c"
-                            },
-                            {
-                                fill: "#93191c"
-                            }]
+                            // endpoints: [["Dot", {
+                            //     radius: 5,
+                            //     cssClass: "endpoint_" + source + "_" + source_interfaceId + " dest_" + destination + " " + x + " networkId_" + link['network_id'] + " serial serial_" + source + "_" + source_interfaceId + "_" + destination + "_" + destination_interfacesId
+                            // }], ["Dot", {
+                            //     radius: 5,
+                            //     cssClass: "endpoint_" + destination + "_" + destination_interfaceId + " dest_" + source + " " + y + " networkId_" + link['network_id'] + " serial serial_" + source + "_" + source_interfaceId + "_" + destination + "_" + destination_interfacesId
+                            // }]],
+                            // endpointStyles: [{
+                            //     fill: "#93191c"
+                            // },
+                            // {
+                            //     fill: "#93191c"
+                            // }]
                         });
                         tmp_conn.source = source;
                         tmp_conn.source_label = source_label;
