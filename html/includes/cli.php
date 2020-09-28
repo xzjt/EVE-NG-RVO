@@ -262,6 +262,7 @@ function SetQuality($p) {
 		$cmd = 'sudo tc qdisc replace dev '.$value.' root netem delay '.$delay[$key].'ms '.$jitter[$key].'ms'.' loss '.
 		$loss[$key].' rate '.$bandwidth[$key].'Kbit 2>&1';
 		exec($cmd, $o, $rc);
+		
 		if ($rc != 0) {
 			// Failed to set delay and jitter on interface
 			error_log(date('M d H:i:s ').'ERROR: '.$GLOBALS['messages'][80092]);
