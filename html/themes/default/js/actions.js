@@ -4100,9 +4100,7 @@ function(g) {
         },
         error: function(i) {
             var e = getJsonMessage(i.responseText);
-            logger(1, "DEBUG: server error (" + i.status + ") on " + c + " " + a + ".");
             logger(1, "DEBUG: " + e);
-            addModal("ERROR", "<p>" + e + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
             $(".edit-link-quality-form").remove()
         }
     });
