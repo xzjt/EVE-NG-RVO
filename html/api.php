@@ -977,6 +977,7 @@ $app -> delete('/api/labs/(:path+)', function($path = array()) use ($app, $db) {
 
 	$event = json_decode($app -> request() -> getBody());
 	$s = '/'.implode('/', $path);
+	$p = json_decode(json_encode($event), True);	// Reading options from delete
 
 	$patterns[0] = '/(.+).unl.*$/';			// Drop after lab file (ending with .unl)
 	$replacements[0] = '$1.unl';
@@ -1031,6 +1032,8 @@ $app -> delete('/api/labs/(:path+)', function($path = array()) use ($app, $db) {
 		$output = apiDeleteLabPicture($lab, $id);
 	} else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl$/', $s)) {
 		$output = apiDeleteLab($lab);
+	} else if (preg_match('/^\/[A-Za-z0-9_+\/\\s-]+\.unl\/quality$/', $s)){
+		$output = apiunSetQuality($lab, $p);
 	} else {
 		$output['code'] = 400;
 		$output['status'] = 'fail';

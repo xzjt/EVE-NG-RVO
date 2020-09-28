@@ -277,6 +277,29 @@ function SetQuality($p) {
 
 
 /**
+ * Function to unset quality of interface
+ *
+ * @param   Array  $p                  Interface and Quality Parameter
+ * @return  int                         0 means ok
+ */
+function unSetQuality($p) {
+	$i = isset($p['destination_interface']) ? Array($p['source_interface'], $p['destination_interface']) : Array($p['source_interface']);
+	
+	foreach ($i as $key => $value) {
+		$cmd = 'sudo tc qdisc del dev '.$value.' root';
+		exec($cmd, $o, $rc);
+		if ($rc != 0) {
+			// Failed to set delay and jitter on interface
+			error_log(date('M d H:i:s ').'ERROR: '.$GLOBALS['messages'][80093]);
+			error_log(date('M d H:i:s ').implode("\n", $o));
+			return 80093;
+		}
+	}
+	
+	return 0;
+}
+
+/**
  * Function to check if a tenant has a valid username.
  *
  * @param   int     $i                  Tenant ID

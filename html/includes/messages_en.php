@@ -347,6 +347,7 @@ $messages[80089] = 'Cannot disable ipv6 (80089).';
 $messages[80090] = 'Cannot delete interface to bridge (80030).';
 $messages[80091] = 'Cannot delete interface to OVS (80031).';
 $messages[80092] = 'Cannot set delay, jitter, bandwidth and loss on current interface (80092).';
+$messages[80093] = 'Cancel Quality setup failed (80093).';
 
 // Authentication (90000-99999)
 $messages[90001] = 'User is not authenticated or session timed out (90001).';

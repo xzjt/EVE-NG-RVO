@@ -236,6 +236,23 @@ function apiSetQuality($lab, $p) {
 }
 
 
+function apiunSetQuality($lab, $p) {
+
+	$rc = unSetQuality($p);
+	
+	if ($rc == 0) {
+		$output['code'] = 201;
+		$output['status'] = 'success';
+		$output['message'] = '';
+	} else {
+		$output['code'] = 400;
+		$output['status'] = 'fail';
+		$output['message'] = $GLOBALS['messages'][$rc];
+	}
+
+	return $output;
+}
+
 /**
  * Function to get a single lab network.
  *
