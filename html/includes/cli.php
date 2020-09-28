@@ -260,7 +260,7 @@ function SetQuality($p) {
 
 	foreach ($i as $key => $value) {
 
-		if ($delay == 0 && $jitter == 0 && $loss == 0 && $bandwidth == 0) {
+		if ($delay == '0' && $jitter == '0' && $loss == '0' && $bandwidth == '0') {
 			$cmd = 'sudo tc qdisc del dev '.$value.' root';
 		} else {
 			$cmd = 'sudo tc qdisc replace dev '.$value.' root netem delay '.$delay[$key].'ms '.$jitter[$key].'ms'.' loss '.
