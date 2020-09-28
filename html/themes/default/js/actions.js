@@ -4207,6 +4207,7 @@ function(g) {
             if (e.status == "success") {
                 logger(1, 'DEBUG: network "' + h.name + '" saved.');
                 addMessage(e.status, e.message)
+                applyQuality == 1
             } else {
                 logger(1, "DEBUG: application error (" + e.status + ") on " + c + " " + a + " (" + e.message + ").");
                 addModal("ERROR", "<p>" + e.message + "</p>", '<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>')
