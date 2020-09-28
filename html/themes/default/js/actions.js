@@ -4074,7 +4074,7 @@ $("body").on("click", ".edit-line-style-form .cancelForm", function(m) {
 });
 
 $("body").on("click", ".edit-link-quality-form .cancelForm",
-function(a) {
+function(g) {
     g.preventDefault();
     $(".frameoverlay").css("width", "calc( 100% - 20px)");
     var h = form2Array("link");
