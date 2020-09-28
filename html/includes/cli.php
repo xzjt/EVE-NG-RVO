@@ -259,13 +259,8 @@ function SetQuality($p) {
 	$bandwidth = Array($p['source_bandwidth'], $p['destination_bandwidth']);
 
 	foreach ($i as $key => $value) {
-
-		if ($delay[$key] == '0' && $jitter[$key] == '0' && $loss[$key] == '0' && $bandwidth[$key] == '0') {
-			$cmd = 'sudo tc qdisc del dev '.$value.' root';
-		} else {
-			$cmd = 'sudo tc qdisc replace dev '.$value.' root netem delay '.$delay[$key].'ms '.$jitter[$key].'ms'.' loss '.
-			$loss[$key].' rate '.$bandwidth[$key].'Kbit 2>&1';
-		}
+		$cmd = 'sudo tc qdisc replace dev '.$value.' root netem delay '.$delay[$key].'ms '.$jitter[$key].'ms'.' loss '.
+		$loss[$key].' rate '.$bandwidth[$key].'Kbit 2>&1';
 		exec($cmd, $o, $rc);
 		if ($rc != 0) {
 			// Failed to set delay and jitter on interface
