@@ -237,7 +237,24 @@ function apiSetQuality($lab, $p) {
 
 
 function apiunSetQuality($lab, $p) {
-
+	// Set link Quality
+	foreach ($lab -> getNodes() as $node_id => $node) {
+		if ($node_id == $p['source']) {
+			foreach ($node -> getInterfaces() as  $interface_id => $interface) {
+				if ($interface_id == $p['source_interfaceId']) {
+					$p['source_interface'] = 'vunl'.$lab -> getTenant().'_'.$node_id.'_'.$interface_id;
+				}
+			}
+		}
+		// Check if destination is network
+		if ($node_id == $p['destination']) {
+			foreach ($node -> getInterfaces() as  $interface_id => $interface) {
+				if ($interface_id == $p['destination_interfaceId']) {
+					$p['destination_interface'] = 'vunl'.$lab -> getTenant().'_'.$node_id.'_'.$interface_id;
+				}
+			}
+		}
+	}
 	$rc = unSetQuality($p);
 	
 	if ($rc == 0) {
