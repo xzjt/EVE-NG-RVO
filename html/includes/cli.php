@@ -279,6 +279,7 @@ function SetQuality($p) {
  * Function to unset quality of interface
  *
  * @param   Array  $p                  Interface and Quality Parameter
+ * @param   string  $p                  Physical Interface ID
  * @return  int                         0 means ok
  */
 function unSetQuality($p) {
