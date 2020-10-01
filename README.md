@@ -7,9 +7,15 @@ Not limited the number of user and role `Admin`, `Editor`, `User`.
 
 Update 2020920
 
-- [x] Link Quality Editable
-- [x] Serial port link style Editable
+- [x] Link quality editable
+- [x] Serial port link style editable
 - [x] Fix a bit bugs
+
+Update 2020928
+
+- [x] Modify link quality apply mechanism
+- [x] Tune up webUI of the lab view
+- [x] Fix a bit bugs  
 
 # Useage
 

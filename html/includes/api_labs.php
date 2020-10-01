@@ -1,5 +1,5 @@
 <?php
-# vim: syntax=php tabstop=4 softtabstop=0 noexpandtab laststatus=1 ruler
+# vim: syntax=php tabstop=4 softtabstop=0 noexpandtab laststatus=1 rulerapiAddLab
 
 /**
  * html/includes/api_labs.php
