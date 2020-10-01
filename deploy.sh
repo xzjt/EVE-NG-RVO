@@ -1,7 +1,7 @@
 #!/bin/bash
 # This scirpt is made by Pete.
-# It is used for configure the environment variable of eve-ng plaform modified by Pete
-# Notice! Don't use it in any offical version that not including any modified php source code. 
+# It is used for deploy new code to EVE-NG Community 203.110 platform
+# DO NOT USE IT ON ANY OTHER VERSION OF EVE-NG
 # Email pete19890813@gmail.com
 # Feel free to contact me if you have any problem.
 
