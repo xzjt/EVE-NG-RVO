@@ -1,7 +1,7 @@
 # EVE-NG-RVO
 This is redevelop of EVE-NG Community version 203.110. 
 
-It supports hot-plug, link style edit, link quality setup. 
+**It supports hot-plug, link style edit, link quality setup!** 
 
 Not limited the number of user and role `Admin`, `Editor`, `User`.
 
