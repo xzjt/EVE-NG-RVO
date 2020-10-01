@@ -30,7 +30,7 @@ Update 2020928
 
     ```shell
 
-    git clone https://github.com/petetong1989/EVE-NG-RVO.git
+    $ git clone https://github.com/petetong1989/EVE-NG-RVO.git
 
     ```
 
@@ -38,9 +38,9 @@ Update 2020928
 
     ```shell
 
-    cd EVE-NG-RVO
-    sudo chmod +x deploy.sh
-    ./deploy.sh
+    $ cd EVE-NG-RVO
+    $ sudo chmod +x deploy.sh
+    $ ./deploy.sh
 
     ```
 
