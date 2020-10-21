@@ -25,17 +25,17 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ---
 type: qemu
-description: Windows Server
-name: Winserver
+description: Linux i386
+name: Linux_i386
 cpulimit: 1
 icon: Server.png
 cpu: 1
-ram: 8192
+ram: 2048
 ethernet: 1
 console: vnc
 shutdown: 1
-qemu_arch: x86_64
-qemu_version: 4.1.0
-qemu_options: -machine type=pc,accel=kvm -cpu host,+pcid,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,hv_synic,hv_stimer
-   -vga virtio -usbdevice tablet -boot order=cd -drive file=/opt/qemu/share/qemu/virtio-win-drivers.img,index=1,if=floppy,readonly
+qemu_arch: i386
+qemu_version: 2.12.0
+qemu_nic: virtio-net-pci
+qemu_options: -machine type=pc,accel=kvm -vga virtio -usbdevice tablet -boot order=dc
 ...
