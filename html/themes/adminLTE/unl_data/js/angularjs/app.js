@@ -188,7 +188,7 @@ app_main_unl.controller('HeaderController', ['$scope', '$http', '$location', '$r
             },
             function errorCallback(response) {
                 console.log(response);
-                toastr["error"]('Stop ALL nodes Failed!', 'Forbidden');
+                toastr["error"](response.data['message'], response.statusText);
             }
         );
     }
