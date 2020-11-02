@@ -5,6 +5,10 @@ This is redevelop of EVE-NG Community version 203.110.
 
 Not limited the number of user and role `Admin`, `Editor`, `User`.
 
+Update 20201102
+- [x] Fix 'stop all nodes' role verification
+- [x] Add 'stop all nodes' response status viewable
+
 Update 2020920
 
 - [x] Link quality editable

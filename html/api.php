@@ -254,7 +254,7 @@ $app -> delete('/api/status', function() use ($app, $db) {
 		$app -> response -> setBody(json_encode($output));
 		return;
 	}
-	if (!in_array($user['role'], Array('admin'))) {
+	if ($user['role'] != 'admin') {
 		$app -> response -> setStatus($GLOBALS['forbidden']['code']);
 		$app -> response -> setBody(json_encode($GLOBALS['forbidden']));
 		return;
