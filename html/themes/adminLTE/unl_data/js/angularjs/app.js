@@ -184,9 +184,11 @@ app_main_unl.controller('HeaderController', ['$scope', '$http', '$location', '$r
         }).then(
             function successCallback(response) {
                 console.log(response)
+                toastr["success"]('Stop All nodes Successfully!', 'Success');
             },
             function errorCallback(response) {
                 console.log(response)
+                toastr["error"]('Stop ALL nodes Failed!', 'Error');
             }
         );
     }
