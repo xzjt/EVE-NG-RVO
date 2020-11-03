@@ -2556,13 +2556,13 @@ class Node
                                 }
                             }
 							// Setting CMD flags (virtual device and map to TAP device)
-							if ($i < 1){
-								$this->flags_eth .= ' -device %NICDRIVER%,netdev=net' . $i . ',mac='.array_rand($mac_array);
-								$this->flags_eth .= ' -netdev tap,id=net' . $i . ',ifname=vunl' . $this->tenant . '_' . $this->id . '_' . $i . ',script=no';
+							if ($i <= 1){
+								$this->flags_eth .= ' -device %NICDRIVER%,netdev=net' . $i . ',mac='.$mac_array[$i];   
+                                $this->flags_eth .= ' -netdev tap,id=net' . $i . ',ifname=vunl' . $this->tenant . '_' . $this->id . '_' . $i . ',script=no';
 							} else {
-								$this->flags_eth .= ' -device %NICDRIVER%,netdev=net' . $i . ',mac=' . incMac($this->firstmac, $i);
+								$this->flags_eth .= ' -device %NICDRIVER%,netdev=net' . $i . ',mac=50:' . sprintf('%02x', $this->tenant) . ':' . sprintf('%02x', $this->id / 512) . ':' . sprintf('%02x', $this->id % 512) . ':00:' . sprintf('%02x', $i);
 								$this->flags_eth .= ' -netdev tap,id=net' . $i . ',ifname=vunl' . $this->tenant . '_' . $this->id . '_' . $i . ',script=no';
-							}   
+							}     
                         }
                     break;
 					case 'a10':
