@@ -2529,7 +2529,43 @@ class Node
 
                         }
                     break;
-                    case 'a10':
+					case 'apicem':
+						$mac_array = array('00:50:56:84:0a:bb', '00:50:56:84:e6:35');
+						for ($i = 0;$i < $this->ethernet;$i++)
+                        {
+                            $n = 'e' . $i; // Interface name
+                            if (isset($old_ethernets[$i]))
+                            {
+                                // Previous interface found, copy from old one
+                                $this->ethernets[$i] = $old_ethernets[$i];
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    $this->ethernets[$i] = new Interfc(Array(
+                                        'name' => $n,
+                                        'type' => 'ethernet'
+                                    ) , $i);
+                                }
+                                catch(Exception $e)
+                                {
+                                    error_log(date('M d H:i:s ') . 'ERROR: ' . $GLOBALS['messages'][40020]);
+                                    error_log(date('M d H:i:s ') . (string)$e);
+                                    return 40020;
+                                }
+                            }
+							// Setting CMD flags (virtual device and map to TAP device)
+							if ($i < 1){
+								$this->flags_eth .= ' -device %NICDRIVER%,netdev=net' . $i . ',mac='.array_rand($mac_array);
+								$this->flags_eth .= ' -netdev tap,id=net' . $i . ',ifname=vunl' . $this->tenant . '_' . $this->id . '_' . $i . ',script=no';
+							} else {
+								$this->flags_eth .= ' -device %NICDRIVER%,netdev=net' . $i . ',mac=' . incMac($this->firstmac, $i);
+								$this->flags_eth .= ' -netdev tap,id=net' . $i . ',ifname=vunl' . $this->tenant . '_' . $this->id . '_' . $i . ',script=no';
+							}   
+                        }
+                    break;
+					case 'a10':
                         $this->flags_eth = '';
                         for ($i = 0;$i < $this->ethernet;$i++)
                         {
