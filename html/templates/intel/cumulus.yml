@@ -28,7 +28,7 @@ type: qemu
 description: Cumulus VX
 name: cumulus
 cpulimit: 1
-icon: Router.png
+icon: Switch.png
 cpu: 1
 ram: 1024
 ethernet: 8

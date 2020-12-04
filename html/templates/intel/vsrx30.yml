@@ -1,5 +1,5 @@
-# Copyright (c) 2017-2020, Alain Degreffe
-# Copyright (c) 2019-2020, Christian Scholz
+# Copyright (c) 2016, Andrea Dainese
+# Copyright (c) 2018, Alain Degreffe
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,19 +25,20 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ---
 type: qemu
-name: vSRX3-0
+description: Juniper vSRX30
+name: vSRX3
 config_script: config_vsrx30.py
 cpulimit: 1
-icon: JuniperSRX-30.png
+icon: JuniperSRX.png
 cpu: 2
 ram: 4096
+ethernet: 6
 eth_name:
 - fxp0/mgmt
 eth_format: ge-0/0/{0}
-ethernet: 8
-qemu_nic: virtio-net-pci
 console: telnet
 qemu_arch: x86_64
-qemu_options: -machine type=pc-1.0,accel=kvm -cpu qemu64,+ssse3,+sse4.1,+sse4.2,+x2apic,+aes,pclmulqdq -serial
-  mon:stdio -nographic -nodefconfig -nodefaults -rtc base=utc
+qemu_version: 4.1.0
+qemu_nic: virtio-net-pci
+qemu_options: -machine type=pc-1.0,accel=kvm -cpu host -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc
 ...

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-# scripts/config_vmx.py
+# scripts/config_vsrx30.py
 #
-# Import/Export script for vmx.
+# Import/Export script for vsrx30.
 #
 # @author Andrea Dainese <andrea.dainese@gmail.com>
 # @author Alain Degreffe <eczema@ecze.com>
@@ -11,7 +11,7 @@
 # @copyright 2019-2020 Christian Scholz
 # @license BSD-3-Clause https://github.com/dainok/unetlab/blob/master/LICENSE
 # @link http://www.eve-ng.net/
-# @version 20181203
+# @version 20200422
 
 import getopt, multiprocessing, os, pexpect, re, sys, time
 
@@ -391,4 +391,3 @@ if __name__ == "__main__":
         sys.exit(127)
 
     sys.exit(0)
-
