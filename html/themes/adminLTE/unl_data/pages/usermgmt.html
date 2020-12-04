@@ -55,12 +55,12 @@
                                     <th>Name</th>
                                     <th>Role</th>
                                     <th>Current folder</th>
-                                    <th data-ng-show="currentLab">Current lab</th>
                                     <th>Last session time</th>
                                     <th>Last session ip</th>
+                                    <th data-ng-show="currentLab">Current lab</th>
                                     <!-- <th data-ng-show="currentFolder">Current folder</th> -->
                                     <th>POD</th>
-                                    <th>Actions</th>
+                                    <th style="{{ (role == 'admin' ) ? '' : 'display:none'}}">Actions</th>
                                 </tr>
                                 <tr data-ng-repeat="(x,y) in userdata">
                                     <td>{{x}}</td>
@@ -75,10 +75,10 @@
                                     <td>{{ (y.session  === null ) ? 'N/A' : timeConverter(y.session) }}</td>
                                     <td>{{ (y.ip === null) ? 'N/A' : y.ip}}</td>
                                     <!-- <td data-ng-show="currentFolder">{{ (y.folder  === null) ? 'N/A' : y.folder }}</td> -->
-                                    <td data-ng-show="currentLab">{{ (y.lab  === null) ? 'N/A' : y.lab }}</td>
+                                    <td data-ng-show="currentLab">{{ (y.lab === null) ? 'N/A' : y.lab }}</td>
                                     <td>{{y.pod}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-default btn-flat btn-xs" data-ng-click="openModal('edituser', y.username);" style="{{ (role == 'admin' || role == 'editor') ? '' : 'display:none'}}"><i class="fa fa-edit"></i> Edit</button>
+                                        <button type="button" class="btn btn-default btn-flat btn-xs" data-ng-click="openModal('edituser', y.username);" style="{{ (role == 'admin' ) ? '' : 'display:none'}}"><i class="fa fa-edit"></i> Edit</button>
                                         <button type="button" class="btn btn-danger btn-flat btn-xs" data-ng-click="deleteUser( y.username )" style="{{ (role == 'admin') ? '' : 'display:none'}}"> <i class="fa fa-trash-o"></i></button>
                                     </td>
                                 </tr>

@@ -35,6 +35,7 @@ $messages[16] = 'Failed to export config (16).';
 $messages[17] = 'Failed to upgrade UNetLab (17).';
 $messages[18] = 'Unable to connect to Internet (18).';
 $messages[19] = 'Export not supported (19).';
+$messages[20] = 'Failed to stop node (20).';
 
 /***************************************************************************
  * Classes
