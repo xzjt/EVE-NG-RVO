@@ -28,7 +28,7 @@ type: qemu
 description: Linux
 name: Linux
 cpulimit: 1
-icon: Server.png
+icon: Server_Linux.png
 cpu: 1
 ram: 2048
 ethernet: 1

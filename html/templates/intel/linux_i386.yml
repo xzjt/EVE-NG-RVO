@@ -28,7 +28,7 @@ type: qemu
 description: Linux i386
 name: Linux_i386
 cpulimit: 1
-icon: Server.png
+icon: Server_Linux.png
 cpu: 1
 ram: 2048
 ethernet: 1
