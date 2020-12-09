@@ -336,7 +336,7 @@ function mainController($scope, $http, $location, $window, $uibModal, $log, $roo
         if (confirm('Are you sure you want to delete this item: ' + tempAllNames + '?')) {
             for (var foldername in folderArray) {
                 if (folderArray[foldername] != '/') fullpath = folderArray[foldername] + '/' + foldername
-                else fullpath = '/' + foldername
+                else fullpath = '/' + foldername + '.unl'
                 $scope.deleteElement(fullpath, 'Folder')
             }
 

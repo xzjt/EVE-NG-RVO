@@ -2541,6 +2541,7 @@ function printFormText(values) {
     }
 };
 
+// add Text to lab
 function addTextObject(b, e) {
     var a = "",
     g, d = 1001,
@@ -4725,7 +4726,7 @@ function createTextObject(newData) {
         dataType: 'json',
         success: function(data) {
             if (data['status'] == 'success') {
-                logger(1, 'DEBUG: create shape ' + 'for lab "' + lab_filename + '".');
+                logger(1, 'DEBUG: create text ' + 'for lab "' + lab_filename + '".');
                 deferred.resolve(data['result']);
             } else {
                 // Application error
