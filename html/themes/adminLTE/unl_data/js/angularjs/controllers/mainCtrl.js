@@ -336,12 +336,12 @@ function mainController($scope, $http, $location, $window, $uibModal, $log, $roo
         if (confirm('Are you sure you want to delete this item: ' + tempAllNames + '?')) {
             for (var foldername in folderArray) {
                 if (folderArray[foldername] != '/') fullpath = folderArray[foldername] + '/' + foldername
-                else fullpath = '/' + foldername + '.unl'
+                else fullpath = '/' + foldername
                 $scope.deleteElement(fullpath, 'Folder')
             }
 
             for (var filename in fileArray) {
-                filename = ($scope.path === '/') ? $scope.path + filename : $scope.path + '/' + filename;
+                filename = ($scope.path === '/') ? $scope.path + filename : $scope.path + '/' + filename + '.unl';
                 $scope.deleteElement(filename, 'File')
             }
         } else return;
