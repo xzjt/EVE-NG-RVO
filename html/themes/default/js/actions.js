@@ -4287,7 +4287,7 @@ function(a) {
         { name: 'list', items: [ 'NumberedList', 'BulletedList' ] },
         { name: 'editing', groups: [ 'selection', 'spellchecker' ], items: [ 'SelectAll', '-', 'Scayt' ] },
         { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton' ] },
-        { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+        { name: 'insert', items: [ 'Image2', 'Flash', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak', 'Iframe' ] },
         { name: 'blocks', items: [ 'Blockquote', 'CreateDiv' ] },
         { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
         '/',
