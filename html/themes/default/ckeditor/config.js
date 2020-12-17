@@ -6,7 +6,7 @@
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	config.removePlugins = 'about,pagebreak,smiley,forms,flash,find';
-	config.extraPlugins = [  "base64pdf", "bootstrapTabs", 'image2' ] ;
+	config.extraPlugins = [  "widget", "base64pdf", "bootstrapTabs", "image2" ] ;
 	config.allowedContent = true ;
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
