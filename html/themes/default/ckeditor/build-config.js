@@ -1,6 +1,6 @@
 ﻿/**
- * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+ * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/license
  */
 
 /**
@@ -10,13 +10,13 @@
  * If you would like to build CKEditor online again
  * (for example to upgrade), visit one the following links:
  *
- * (1) http://ckeditor.com/builder
+ * (1) https://ckeditor.com/cke4/builder
  *     Visit online builder to build CKEditor from scratch.
  *
- * (2) http://ckeditor.com/builder/d92ab52ffca329d7b5e1b78ef77a81f9
+ * (2) https://ckeditor.com/cke4/builder/e49071a8540dc345133690ae853fc677
  *     Visit online builder to build CKEditor, starting with the same setup as before.
  *
- * (3) http://ckeditor.com/builder/download/d92ab52ffca329d7b5e1b78ef77a81f9
+ * (3) https://ckeditor.com/cke4/builder/download/e49071a8540dc345133690ae853fc677
  *     Straight download link to the latest version of CKEditor (Optimized) with the same setup as before.
  *
  * NOTE:
@@ -25,7 +25,7 @@
  */
 
 var CKBUILDER_CONFIG = {
-	skin: 'moono-lisa',
+	skin: 'moono',
 	preset: 'full',
 	ignore: [
 		'.DS_Store',
@@ -38,6 +38,8 @@ var CKBUILDER_CONFIG = {
 		'.jshintignore',
 		'.jshintrc',
 		'.mailmap',
+		'.npm',
+		'.nvmrc',
 		'.travis.yml',
 		'bender-err.log',
 		'bender-out.log',
@@ -47,25 +49,27 @@ var CKBUILDER_CONFIG = {
 		'gruntfile.js',
 		'less',
 		'node_modules',
+		'package-lock.json',
 		'package.json',
 		'tests'
 	],
 	plugins : {
 		'a11yhelp' : 1,
-		'about' : 1,
 		'basicstyles' : 1,
 		'bidi' : 1,
 		'blockquote' : 1,
 		'clipboard' : 1,
 		'colorbutton' : 1,
-		'colordialog' : 1,
+		'contents' : 1,
 		'contextmenu' : 1,
 		'copyformatting' : 1,
 		'dialogadvtab' : 1,
 		'div' : 1,
+		'editorplaceholder' : 1,
 		'elementspath' : 1,
 		'enterkey' : 1,
 		'entities' : 1,
+		'exportpdf' : 1,
 		'filebrowser' : 1,
 		'find' : 1,
 		'flash' : 1,
@@ -74,9 +78,9 @@ var CKBUILDER_CONFIG = {
 		'format' : 1,
 		'forms' : 1,
 		'horizontalrule' : 1,
-		'htmlwriter' : 1,
 		'iframe' : 1,
 		'image' : 1,
+		'image2' : 1,
 		'indentblock' : 1,
 		'indentlist' : 1,
 		'justify' : 1,
@@ -88,8 +92,14 @@ var CKBUILDER_CONFIG = {
 		'maximize' : 1,
 		'newpage' : 1,
 		'pagebreak' : 1,
+		'pasteFromGoogleDoc' : 1,
+		'pastecode' : 1,
+		'pastefromexcel' : 1,
+		'pastefromgdocs' : 1,
+		'pastefromlibreoffice' : 1,
 		'pastefromword' : 1,
 		'pastetext' : 1,
+		'pastetools' : 1,
 		'preview' : 1,
 		'print' : 1,
 		'removeformat' : 1,
@@ -97,20 +107,29 @@ var CKBUILDER_CONFIG = {
 		'save' : 1,
 		'scayt' : 1,
 		'selectall' : 1,
+		'selectallcontextmenu' : 1,
 		'showblocks' : 1,
 		'showborders' : 1,
 		'smiley' : 1,
 		'sourcearea' : 1,
+		'sourcedialog' : 1,
+		'spacingsliders' : 1,
 		'specialchar' : 1,
 		'stylescombo' : 1,
 		'tab' : 1,
 		'table' : 1,
+		'tableresize' : 1,
+		'tableresizerowandcolumn' : 1,
 		'tableselection' : 1,
+		'tablesorter' : 1,
 		'tabletools' : 1,
+		'tabletoolstoolbar' : 1,
 		'templates' : 1,
-		'toolbar' : 1,
+		'toc' : 1,
+		'uicolor' : 1,
 		'undo' : 1,
 		'uploadimage' : 1,
+		'widgetcontextmenu' : 1,
 		'wsc' : 1,
 		'wysiwygarea' : 1
 	},
