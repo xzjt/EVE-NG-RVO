@@ -5,8 +5,8 @@
 
 CKEDITOR.editorConfig = function( config ) {
 
-    config.filebrowserBrowseUrl = '/html/themes/default/ckfinder/ckfinder.html';
-    config.filebrowserUploadUrl = '/html/themes/default/ckfinder/connector?command=QuickUpload&type=Files';
+    config.filebrowserBrowseUrl = '/themes/default/ckfinder/ckfinder.html';
+    config.filebrowserUploadUrl = '/themes/default/ckfinder/connector?command=QuickUpload&type=Files';
 
 	config.toolbarGroups = [
 		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
