@@ -3,12 +3,28 @@
  For licensing, see LICENSE.html or http://cksource.com/ckfinder/license
  */
 
-var config = {};
+CKEDITOR.editorConfig = function( config ) {
 
-// Set your configuration options below.
+    config.filebrowserBrowseUrl = '/html/themes/default/ckfinder/ckfinder.html';
+    config.filebrowserUploadUrl = '/html/themes/default/ckfinder/connector?command=QuickUpload&type=Files';
 
-// Examples:
-// config.language = 'pl';
-// config.skin = 'jquery-mobile';
+	config.toolbarGroups = [
+		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+		{ name: 'forms', groups: [ 'forms' ] },
+		'/',
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+		{ name: 'links', groups: [ 'links' ] },
+		{ name: 'insert', groups: [ 'insert' ] },
+		'/',
+		{ name: 'styles', groups: [ 'styles' ] },
+		{ name: 'colors', groups: [ 'colors' ] },
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		{ name: 'tools', groups: [ 'tools' ] },
+		{ name: 'others', groups: [ 'others' ] },
+		{ name: 'about', groups: [ 'about' ] }
+	];
 
-CKFinder.define( config );
+	config.removeButtons = 'Maximize,ShowBlocks,About,Flash,PageBreak,Iframe,Print,Preview,ExportPdf,NewPage,Save,Templates';
+};
