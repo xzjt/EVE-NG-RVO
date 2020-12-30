@@ -147,9 +147,9 @@ switch ($action) {
 		exec($cmd, $o, $rc);
 
 		//Default permissions for upload image files
-		$cmd = '/bin/chown -R www-data:www-data /opt/unetlab/html/themes/default/images > /dev/null/ 2>& 1';
+		$cmd = '/bin/chown -R www-data:www-data /opt/unetlab/html/themes/default/images > /dev/null 2>& 1';
 		exec($cmd, $o, $rc);
-		$cmd = '/bin/chmod 755 /opt/unetlab/html/themes/default/images > /dev/null/ 2>& 1';
+		$cmd = '/bin/chmod 755 /opt/unetlab/html/themes/default/images > /dev/null 2>& 1';
 		exec($cmd, $o, $rc);
 
 		// /opt/unetlab/scripts
