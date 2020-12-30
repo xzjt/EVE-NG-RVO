@@ -20,7 +20,7 @@ if [ -d ./html ] && [ -d /opt/unetlab ]; then
 		echo '[-] Copy folder "html" to "/opt/unetlab" failed'
 		htmlcp='failed'
 	else
-		echo '[+] Copy folder html to "/opt/unetlab" successfully!'
+		echo '[+] Copy folder html to "/opt/unetlab" success!'
 	fi
 fi
 
@@ -30,7 +30,7 @@ if [ -d ./scripts ] && [ -d /opt/unetlab ]; then
 		echo '[-] Copy folder "scripts" to "/opt/unetlab" failed'
 		scrptscp='failed'
 	else
-		echo '[+] Copy folder scripts to "/opt/unetlab" successfully!'
+		echo '[+] Copy folder scripts to "/opt/unetlab" success!'
 	fi
 fi
 
@@ -42,7 +42,7 @@ if [ $? -ne 0 ]; then
 		echo '[-] Add user www-data to sudoers failed'
 		sudoers='failed'
 	else
-		echo '[+] Add user www-data to sudoers successfully!'
+		echo '[+] Add user www-data to sudoers success!'
 	fi
 else
 	echo '[-] User www-data is alreay in sudoers!'
@@ -53,12 +53,19 @@ if [ ! -x $ciscokeygen ]; then
 	if [ $? -ne 0 ]; then
 		echo '[-] Change CiscoKeygen.py to excutable failed.'
 	else
-		echo '[+] Change CiscokeyGen.py to excuteable successfully!'
+		echo '[+] Change CiscokeyGen.py to excuteable success!'
 		ln -s $ciscokeygen /usr/bin/CiscoKeyGen
 	fi		
 fi
 
-/opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+sudo chown -R www-data:www-data /opt/unetlab/html/themes/default/images
+if [ $? -ne 0 ]; then
+	echo '[-] Change ower to www-data for folder "/opt/unetlab/html/themes/default/images" faild.'
+else
+	echo '[+] Change ower to www-data for folder "/opt/unetlab/html/themes/default/images" success!'
+fi
+
+sudo /opt/unetlab/wrappers/unl_wrapper -a fixpermissions
 if [ $? -ne 0 ]; then
 	echo '[-] fix permissions failed.'
 	exit 1
