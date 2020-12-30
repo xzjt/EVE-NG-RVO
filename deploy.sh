@@ -47,7 +47,7 @@ if [ -d ./scripts ] && [ -d /opt/unetlab ]; then
 		echo '[-] Copy folder "scripts" to "/opt/unetlab" failed'
 		scrptscp='failed'
 	else
-		echo '[+] Copy folder scripts to "/opt/unetlab" success!'
+		echo '[+] Copy folder "scripts" to "/opt/unetlab" success!'
 	fi
 fi
 
