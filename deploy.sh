@@ -10,7 +10,7 @@ ciscokeygen='/opt/unetlab/scripts/CiscoKeyGen.py'
 
 user=$(whoami)
 
-if [ $user  -ne 'root' ]; then
+if [ "$user" != "root" ]; then
 	echo '[!] Current user not root, please change user as root to exceute this script.'
 	exit 1
 fi
@@ -75,7 +75,7 @@ if [ ! -x $ciscokeygen ]; then
 	fi		
 fi
 
-if [ $wrappers -ne 'failed' ]; then
+if [ "$wrappers" != "failed" ]; then
 	sudo /opt/unetlab/wrappers/unl_wrapper -a fixpermissions
 	if [ $? -ne 0 ]; then
 		echo '[-] fix permissions failed.'
