@@ -8,6 +8,13 @@
 
 ciscokeygen='/opt/unetlab/scripts/CiscoKeyGen.py'
 
+user=$(whoami)
+
+if [ $user  -ne 'root' ]; then
+	echo '[!] Current user not root, please change user as root to exceute this script.'
+	exit 1
+fi
+
 sudo dpkg -l | grep eve > /dev/null
 if [ $? -ne 0 ]; then
 	echo '[!] eve-ng is not installed on current system, exit.'
@@ -20,7 +27,17 @@ if [ -d ./html ] && [ -d /opt/unetlab ]; then
 		echo '[-] Copy folder "html" to "/opt/unetlab" failed'
 		htmlcp='failed'
 	else
-		echo '[+] Copy folder html to "/opt/unetlab" success!'
+		echo '[+] Copy folder "html" to "/opt/unetlab" success!'
+	fi
+fi
+
+if [ -d ./wrappers ] && [ -d /opt/unetlab ]; then
+	cp -r ./wrappers /opt/unetlab
+	if [ $? -ne 0 ]; then
+		echo '[-] Copy folder "wrappers" to "/opt/unetlab" failed'
+		wrappers='failed'
+	else
+		echo '[+] Copy folder "wrappers" to "/opt/unetlab" success!'
 	fi
 fi
 
@@ -58,17 +75,14 @@ if [ ! -x $ciscokeygen ]; then
 	fi		
 fi
 
-sudo chown -R www-data:www-data /opt/unetlab/html/themes/default/images
-if [ $? -ne 0 ]; then
-	echo '[-] Change ower to www-data for folder "/opt/unetlab/html/themes/default/images" faild.'
-else
-	echo '[+] Change ower to www-data for folder "/opt/unetlab/html/themes/default/images" success!'
-fi
-
-sudo /opt/unetlab/wrappers/unl_wrapper -a fixpermissions
-if [ $? -ne 0 ]; then
-	echo '[-] fix permissions failed.'
-	exit 1
+if [ $wrappers -ne 'failed' ]; then
+	sudo /opt/unetlab/wrappers/unl_wrapper -a fixpermissions
+	if [ $? -ne 0 ]; then
+		echo '[-] fix permissions failed.'
+		exit 1
+	else
+		echo '[+] fix permissions success!'
+	fi
 fi
 
 exit 0 
